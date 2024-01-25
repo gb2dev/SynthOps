@@ -34,5 +34,5 @@ unequip_anim = ""
 reload_anim = ""
 use_anim = ""
 target_item_combine = ""
-discard_after_use = true
+discard_after_use = false
 reload_amount = 1
