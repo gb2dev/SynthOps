@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="InventoryItemPD" load_steps=3 format=3 uid="uid://cdm2oynitf13j"]
+
+[ext_resource type="Texture2D" uid="uid://c8ide3x2pkxeu" path="res://SimShock/Assets/Graphics/ItemIcons/Hammer.png" id="1_00t03"]
+[ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventoryItemPD.gd" id="1_ihdk3"]
+
+[resource]
+script = ExtResource("1_ihdk3")
+item_type = 1
+name = "Hammer"
+descpription = ""
+icon = ExtResource("1_00t03")
+power = 0.0
+is_stackable = false
+stack_size = 0
+drop_scene = "res://SimShock/PrefabScenes/pickup_hammer.tscn"
+hint_text_on_use = ""
+attribute_name = ""
+attribute_change_amount = 0.0
+primary_use_prompt = "Hit"
+secondary_use_prompt = ""
+charge_max = 100.0
+ammo_item_name = ""
+charge_current = 100.0
+wieldable_range = 0.0
+wieldable_damage = 0.0
+equip_anim = ""
+unequip_anim = ""
+reload_anim = ""
+use_anim = ""
+target_item_combine = ""
+discard_after_use = false
+reload_amount = 1

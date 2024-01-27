@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq6tvhqcy2aps"]
+[gd_scene load_steps=6 format=3 uid="uid://dq6tvhqcy2aps"]
 
 [ext_resource type="Script" path="res://COGITO/EasyMenus/Scripts/main_menu_controller.gd" id="1_lbw7r"]
 [ext_resource type="PackedScene" uid="uid://qlskttl1wjr7" path="res://COGITO/EasyMenus/Scenes/options_menu.tscn" id="2_pwqpr"]
+
+[sub_resource type="SystemFont" id="SystemFont_xuyra"]
+font_names = PackedStringArray("Jura")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dgomm"]
+font = SubResource("SystemFont_xuyra")
+font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_wrn81"]
 
@@ -33,6 +41,7 @@ metadata/_edit_group_ = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "SimShock"
+label_settings = SubResource("LabelSettings_dgomm")
 horizontal_alignment = 1
 
 [node name="Subtitle" type="Label" parent="Content"]

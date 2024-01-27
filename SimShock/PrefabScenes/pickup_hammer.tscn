@@ -1,45 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://kicjwmh02uwf"]
+[gd_scene load_steps=11 format=3 uid="uid://ctv6kftnbejlh"]
 
-[ext_resource type="Script" path="res://COGITO/Scripts/player.gd" id="1_wkneb"]
-[ext_resource type="Resource" uid="uid://ev2xuamhfojm" path="res://COGITO/InventoryPD/Inventories/PlayerInventory.tres" id="2_qleua"]
-[ext_resource type="AudioStream" uid="uid://ba8gpptnnapyh" path="res://COGITO/Assets/Audio/Kenney/cloth2.ogg" id="3_1sodd"]
-[ext_resource type="AudioStream" uid="uid://up2hfhgq1qx6" path="res://COGITO/Assets/Audio/Kenney/Footsteps/footstep00.ogg" id="4_d51ss"]
-[ext_resource type="AnimationLibrary" uid="uid://cdchpsv104er2" path="res://COGITO/Assets/Animations/player_eyes.tres" id="4_juktk"]
-[ext_resource type="AudioStream" uid="uid://crj07wq4oocwi" path="res://COGITO/Assets/Audio/Kenney/Footsteps/footstep01.ogg" id="5_6htai"]
-[ext_resource type="Script" path="res://COGITO/Scripts/Wieldable_Flashlight.gd" id="5_iwnf5"]
-[ext_resource type="AudioStream" uid="uid://dewyukd562k37" path="res://COGITO/Assets/Audio/Kenney/Footsteps/footstep02.ogg" id="6_nrttm"]
-[ext_resource type="AnimationLibrary" uid="uid://cbfutvkb1x3kr" path="res://COGITO/Assets/Animations/anim_wieldable_pistol.es.tres" id="6_nt2qd"]
-[ext_resource type="Script" path="res://COGITO/Scripts/Wieldable_Pistol.gd" id="7_2f3bv"]
-[ext_resource type="AudioStream" uid="uid://c5kfw4o57foju" path="res://COGITO/Assets/Audio/Kenney/Footsteps/footstep03.ogg" id="7_swbyy"]
-[ext_resource type="AudioStream" uid="uid://b4mt1tuxo2144" path="res://COGITO/Assets/Audio/Kenney/Footsteps/footstep04.ogg" id="8_2tp8b"]
-[ext_resource type="AudioStream" uid="uid://dsp8iwkwq2rlu" path="res://COGITO/Assets/Audio/Kenney/UiAudio/switch1.ogg" id="9_omv36"]
-[ext_resource type="PackedScene" uid="uid://bkbudpcayf2jc" path="res://COGITO/Components/BrightnessComponent.tscn" id="9_x4tef"]
-[ext_resource type="Script" path="res://SimShock/Scripts/Wieldable_Hammer.gd" id="10_ao2t8"]
-[ext_resource type="AudioStream" uid="uid://clsajk36s7luk" path="res://COGITO/Assets/Audio/Kenney/error_004.ogg" id="11_45f3g"]
-[ext_resource type="PackedScene" uid="uid://b37xr3nyh6aog" path="res://COGITO/Components/StaminaComponent.tscn" id="11_cbmdm"]
-[ext_resource type="Script" path="res://SimShock/Scripts/Wieldable_OmniTool.gd" id="11_jvm0w"]
-[ext_resource type="PackedScene" uid="uid://c4p6cl0xvfdar" path="res://COGITO/Components/HealthComponent.tscn" id="11_ms07f"]
-[ext_resource type="PackedScene" uid="uid://c1umit2vtv22v" path="res://COGITO/PrefabScenes/projectile_pistol.tscn" id="11_ydo45"]
-[ext_resource type="PackedScene" uid="uid://ctdx2bs6fji20" path="res://COGITO/Components/SanityComponent.tscn" id="12_tv46k"]
-[ext_resource type="PackedScene" uid="uid://dy3tudla5p2nc" path="res://COGITO/Components/PlayerInteractionComponent.tscn" id="13_rawn6"]
+[ext_resource type="Script" path="res://COGITO/InventoryPD/Cogito_Pickup.gd" id="1_tx87t"]
+[ext_resource type="Resource" uid="uid://cdm2oynitf13j" path="res://SimShock/InventoryPD/Items/Hammer.tres" id="2_7v1hn"]
+[ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd" id="3_xoy07"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bvi11"]
-size = Vector3(0.6, 1.6, 0.6)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgxde"]
-radius = 0.3
-height = 0.8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbp4w"]
-albedo_color = Color(0.0392157, 0.0431373, 0.0745098, 1)
-metallic = 0.95
-metallic_specular = 0.1
-metallic_texture_channel = 3
-roughness = 0.15
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0btuw"]
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
+[sub_resource type="Resource" id="Resource_nnknj"]
+script = ExtResource("3_xoy07")
+inventory_item = ExtResource("2_7v1hn")
+quantity = 1
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_r6lnb"]
 _data = PackedByteArray(2, 0, 0, 0, 5, 0, 0, 0, 4, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0, 2, 0, 0, 0, 115, 66, 19, 0, 77, 0, 72, 115, 204, 0, 0, 0, 209, 226, 4, 0, 0, 1, 0, 0, 1, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 77, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 0, 8, 0, 2, 0, 2, 0, 169, 0, 0, 0, 64, 0, 0, 0, 56, 181, 0, 0, 0, 1, 1, 4, 0, 4, 0, 1, 0, 1, 0, 233, 0, 0, 0, 16, 0, 0, 0, 200, 214, 0, 0, 0, 2, 1, 2, 0, 2, 0, 1, 0, 1, 0, 249, 0, 0, 0, 16, 0, 0, 0, 172, 110, 0, 0, 0, 3, 1, 1, 0, 1, 0, 1, 0, 1, 0, 9, 1, 0, 0, 16, 0, 0, 0, 6, 136, 183, 185, 185, 185, 25, 93, 107, 1, 0, 0, 0, 0, 0, 0, 0, 0, 183, 185, 185, 185, 25, 93, 107, 1, 0, 0, 0, 0, 0, 0, 0, 0, 8, 93, 129, 224, 4, 29, 157, 85, 72, 68, 68, 68, 55, 222, 22, 247, 8, 108, 145, 99, 148, 156, 158, 85, 0, 0, 0, 0, 26, 15, 141, 171, 176, 20, 161, 81, 28, 158, 158, 94, 0, 0, 0, 0, 0, 0, 243, 230, 80, 193, 136, 65, 222, 222, 95, 223, 0, 0, 127, 119, 127, 119, 127, 119, 119, 247, 182, 86, 59, 182, 181, 2, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -84,212 +52,30 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gcevq")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_af0lu"]
-streams_count = 5
-stream_0/stream = ExtResource("4_d51ss")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("5_6htai")
-stream_1/weight = 1.0
-stream_2/stream = ExtResource("6_nrttm")
-stream_2/weight = 1.0
-stream_3/stream = ExtResource("7_swbyy")
-stream_3/weight = 1.0
-stream_4/stream = ExtResource("8_2tp8b")
-stream_4/weight = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_amy1d"]
+size = Vector3(0.439306, 0.0828058, 0.0807639)
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-script = ExtResource("1_wkneb")
-fall_damage = 10
-fall_damage_threshold = -8.0
-inventory_data = ExtResource("2_qleua")
-jump_sound = ExtResource("3_1sodd")
-MOUSE_SENS = 0.1
-STEP_MAX_SLOPE_DEGREE = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_5prt8"]
+size = Vector3(0.0942247, 0.2, 0.0599624)
 
-[node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_bvi11")
-
-[node name="CrouchingCollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
-shape = SubResource("CapsuleShape3D_fgxde")
-disabled = true
-
-[node name="StaircheckRayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
-target_position = Vector3(0, -0.5, 0)
-
-[node name="CrouchRayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
-target_position = Vector3(0, 1.6, 0)
-collision_mask = 3
-
-[node name="CarryablePosition" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.2, 0.341, -0.3)
-
-[node name="Neck" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
-
-[node name="Head" type="Node3D" parent="Neck"]
-
-[node name="Eyes" type="Node3D" parent="Neck/Head"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Neck/Head/Eyes"]
-reset_on_save = false
-root_node = NodePath("../..")
-libraries = {
-"": ExtResource("4_juktk")
-}
-
-[node name="Camera" type="Camera3D" parent="Neck/Head/Eyes"]
-
-[node name="InteractionRaycast" type="RayCast3D" parent="Neck/Head/Eyes/Camera"]
-target_position = Vector3(0, 0, -2.5)
-collision_mask = 2
-
-[node name="Wieldables" type="Node3D" parent="Neck/Head"]
-
-[node name="Flashlight" type="RigidBody3D" parent="Neck/Head/Wieldables"]
-transform = Transform3D(-2.56068e-07, -3.61092e-06, 1, -0.997495, 0.0707372, 0, -0.0707372, -0.997495, -3.61999e-06, 0.325805, -0.8, -0.531526)
-visible = false
+[node name="pickup_hammer" type="RigidBody3D"]
 collision_layer = 3
-mass = 2.0
-freeze = true
-script = ExtResource("5_iwnf5")
-drain_rate = 4.0
-switch_sound = ExtResource("9_omv36")
+script = ExtResource("1_tx87t")
+slot_data = SubResource("Resource_nnknj")
+interaction_text = "Pick up Hammer"
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Neck/Head/Wieldables/Flashlight"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.0541318, 0, 0)
-radius = 0.05
-height = 0.3
-material = SubResource("StandardMaterial3D_lbp4w")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Neck/Head/Wieldables/Flashlight"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.145868, 0, 0)
-radius = 0.06
-height = 0.1
-material = SubResource("StandardMaterial3D_lbp4w")
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Neck/Head/Wieldables/Flashlight"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.196543, 0, 0)
-radius = 0.05
-height = 0.01
-material = SubResource("StandardMaterial3D_0btuw")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Neck/Head/Wieldables/Flashlight"]
-bus = &"SFX"
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Neck/Head/Wieldables/Flashlight"]
-transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, -1, 1.91069e-15, 4.37114e-08, 0, 1, -4.37114e-08, 0.174371, 0, 0)
-visible = false
-spot_range = 8.0
-spot_angle = 30.0
-
-[node name="Foam Pistol" type="RigidBody3D" parent="Neck/Head/Wieldables"]
-transform = Transform3D(-3.61999e-06, 0, 0.999999, 0, 1, 0, -1, 0, -3.61999e-06, 0.328536, -0.26394, -0.53488)
-visible = false
-collision_layer = 3
-freeze = true
-script = ExtResource("7_2f3bv")
-projectile_prefab = ExtResource("11_ydo45")
-projectile_velocity = 50.0
-default_position = Vector3(0.329, -0.264, -0.535)
-sound_primary_use = ExtResource("11_45f3g")
-
-[node name="pistol_mesh" type="MeshInstance3D" parent="Neck/Head/Wieldables/Foam Pistol"]
+[node name="hammer_mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gjvni")
 skeleton = NodePath("")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Neck/Head/Wieldables/Foam Pistol"]
-bus = &"SFX"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0600074, 0)
+shape = SubResource("BoxShape3D_amy1d")
 
-[node name="Bullet_Point" type="Node3D" parent="Neck/Head/Wieldables/Foam Pistol"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109521, -0.0795401, 0.000611126)
+shape = SubResource("BoxShape3D_5prt8")
+
+[node name="Bullet_Point" type="Node3D" parent="."]
 transform = Transform3D(1, 0, -1.81899e-12, 0, 1, 0, 0, 0, 1, 0.277335, 0.0601448, 0.00182778)
-
-[node name="Hammer" type="RigidBody3D" parent="Neck/Head/Wieldables"]
-transform = Transform3D(-3.61999e-06, 0, 0.999999, 0, 1, 0, -1, 0, -3.61999e-06, 0.328536, -0.26394, -0.53488)
-visible = false
-collision_layer = 3
-freeze = true
-script = ExtResource("10_ao2t8")
-projectile_prefab = ExtResource("11_ydo45")
-projectile_velocity = 50.0
-default_position = Vector3(0.329, -0.264, -0.535)
-
-[node name="pistol_mesh" type="MeshInstance3D" parent="Neck/Head/Wieldables/Hammer"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("ArrayMesh_gjvni")
-skeleton = NodePath("")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Neck/Head/Wieldables/Hammer"]
-bus = &"SFX"
-
-[node name="Bullet_Point" type="Node3D" parent="Neck/Head/Wieldables/Hammer"]
-transform = Transform3D(1, 0, -1.81899e-12, 0, 1, 0, 0, 0, 1, 0.277335, 0.0601448, 0.00182778)
-
-[node name="Omni Tool" type="RigidBody3D" parent="Neck/Head/Wieldables"]
-transform = Transform3D(-3.61999e-06, 0, 0.999999, 0, 1, 0, -1, 0, -3.61999e-06, 0.328536, -0.26394, -0.53488)
-visible = false
-collision_layer = 3
-freeze = true
-script = ExtResource("11_jvm0w")
-projectile_prefab = ExtResource("11_ydo45")
-projectile_velocity = 50.0
-default_position = Vector3(0.329, -0.264, -0.535)
-
-[node name="pistol_mesh" type="MeshInstance3D" parent="Neck/Head/Wieldables/Omni Tool"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("ArrayMesh_gjvni")
-skeleton = NodePath("")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Neck/Head/Wieldables/Omni Tool"]
-bus = &"SFX"
-
-[node name="Bullet_Point" type="Node3D" parent="Neck/Head/Wieldables/Omni Tool"]
-transform = Transform3D(1, 0, -1.81899e-12, 0, 1, 0, 0, 0, 1, 0.277335, 0.0601448, 0.00182778)
-
-[node name="WieldableAnimationPlayer" type="AnimationPlayer" parent="Neck/Head/Wieldables"]
-reset_on_save = false
-libraries = {
-"": ExtResource("6_nt2qd")
-}
-
-[node name="WieldableAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Neck/Head/Wieldables"]
-bus = &"SFX"
-
-[node name="SlidingTimer" type="Timer" parent="."]
-wait_time = 1.5
-one_shot = true
-
-[node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.488, 0)
-stream = SubResource("AudioStreamRandomizer_af0lu")
-volume_db = -38.0
-bus = &"SFX"
-
-[node name="FootstepTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="PlayerInteractionComponent" parent="." node_paths=PackedStringArray("interaction_raycast", "carryable_position", "wieldable_nodes") instance=ExtResource("13_rawn6")]
-interaction_raycast = NodePath("../Neck/Head/Eyes/Camera/InteractionRaycast")
-carryable_position = NodePath("../CarryablePosition")
-wieldable_nodes = [NodePath("../Neck/Head/Wieldables/Foam Pistol"), NodePath("../Neck/Head/Wieldables/Flashlight"), NodePath("../Neck/Head/Wieldables/Hammer"), NodePath("../Neck/Head/Wieldables/Omni Tool")]
-
-[node name="HealthComponent" parent="." instance=ExtResource("11_ms07f")]
-max_health = 100.0
-start_health = 100.0
-no_sanity_damage = 1.0
-
-[node name="StaminaComponent" parent="." instance=ExtResource("11_cbmdm")]
-max_stamina = 30.0
-
-[node name="SanityComponent" parent="." instance=ExtResource("12_tv46k")]
-start_sanity = 30.0
-
-[node name="BrightnessComponent" parent="." instance=ExtResource("9_x4tef")]
-
-[connection signal="animation_finished" from="Neck/Head/Eyes/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="SlidingTimer" to="." method="_on_sliding_timer_timeout"]

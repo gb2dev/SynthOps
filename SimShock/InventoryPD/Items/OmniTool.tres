@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="InventoryItemPD" load_steps=3 format=3 uid="uid://cshqfrgl45fkv"]
+
+[ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventoryItemPD.gd" id="1_ihdk3"]
+[ext_resource type="Texture2D" uid="uid://bew21lvc2t53u" path="res://SimShock/Assets/Graphics/ItemIcons/OmniTool.png" id="1_j4oro"]
+
+[resource]
+script = ExtResource("1_ihdk3")
+item_type = 1
+name = "Omni Tool"
+descpription = ""
+icon = ExtResource("1_j4oro")
+power = 0.0
+is_stackable = false
+stack_size = 0
+drop_scene = "res://SimShock/PrefabScenes/pickup_omnitool.tscn"
+hint_text_on_use = ""
+attribute_name = ""
+attribute_change_amount = 0.0
+primary_use_prompt = "Hack"
+secondary_use_prompt = ""
+charge_max = 100.0
+ammo_item_name = ""
+charge_current = 100.0
+wieldable_range = 0.0
+wieldable_damage = 0.0
+equip_anim = ""
+unequip_anim = ""
+reload_anim = ""
+use_anim = ""
+target_item_combine = ""
+discard_after_use = false
+reload_amount = 1

@@ -14,9 +14,12 @@ config/name="SimShock"
 run/main_scene="res://SimShock/Levels/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 run/max_fps=120
-boot_splash/image="res://COGITO/COGITO_icon.png"
+boot_splash/bg_color=Color(0.129412, 0.129412, 0.129412, 1)
+boot_splash/image="res://SimShock/Assets/Graphics/Logo/SimShock Logo Transparent.png"
 boot_splash/fullsize=false
-config/icon="res://COGITO/COGITO_icon.png"
+config/icon="res://SimShock/Assets/Graphics/Logo/SimShock Logo.png"
+config/bg_color=Color(0.129412, 0.129412, 0.129412, 1)
+config/image="res://SimShock/Images/SimShock Logo Transparent.png"
 
 [autoload]
 
