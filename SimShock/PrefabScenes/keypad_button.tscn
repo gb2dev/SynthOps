@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckgn43hj0k2ra"]
+
+[ext_resource type="Script" path="res://COGITO/Scripts/Cogito_Switch.gd" id="1_337rs"]
+[ext_resource type="AudioStream" uid="uid://0himm415mqex" path="res://COGITO/Assets/Audio/Kenney/UiAudio/switch29.ogg" id="2_ovjhy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhi1i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fw6vd"]
+size = Vector3(0.1, 0.1, 0.02)
+
+[node name="KeypadButton" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.05, 0.06)
+collision_layer = 3
+script = ExtResource("1_337rs")
+interaction_text_when_on = "Press Keypad Number 1"
+interaction_text_when_off = "Press Keypad Number 1"
+switch_sound = ExtResource("2_ovjhy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.1, 0.1, 0.02)
+material = SubResource("StandardMaterial3D_nhi1i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fw6vd")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.011)
+text = "1"
+font_size = 16
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"

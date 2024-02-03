@@ -173,11 +173,17 @@ func get_item_amount_in_inventory(item_name_to_check_for:String) -> int:
 func update_wieldable_data(_player_interaction_component : PlayerInteractionComponent):
 	if _player_interaction_component: #Only update if something get's passed
 		player_interaction_component = _player_interaction_component
-	wieldable_data_text = str(int(charge_current)) + "|" + str(get_item_amount_in_inventory(ammo_item_name))
+	if charge_max > 0:
+		wieldable_data_text = str(int(charge_current)) + "|" + str(get_item_amount_in_inventory(ammo_item_name))
+	else:
+		wieldable_data_text = ""
 	player_interaction_component.emit_signal("updated_wieldable_data", wieldable_data_icon, wieldable_data_text)
 
 
 func subtract(amount):
+	if charge_max <= 0:
+		return
+	
 	charge_current -= amount
 	if charge_current < 0:
 		charge_current = 0
@@ -187,7 +193,7 @@ func subtract(amount):
 		update_wieldable_data(null)
 	
 	charge_changed.emit()
-	
+
 
 func add(amount):
 	charge_current += amount

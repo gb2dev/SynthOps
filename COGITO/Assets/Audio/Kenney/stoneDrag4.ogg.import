@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/stoneDrag4.ogg-296aaf076ad045d5c2a9ff4d653f21
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

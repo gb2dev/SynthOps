@@ -129,7 +129,7 @@ func attempt_action_primary():
 	if equipped_wieldable_node == null:
 		print("Nothing equipped, but is_wielding was true. This shouldn't happen!")
 		return
-	if equipped_wieldable_item.charge_current == 0:
+	if equipped_wieldable_item.charge_current == 0 and equipped_wieldable_item.charge_max > 0:
 		send_hint(null, equipped_wieldable_item.name + " is out of ammo.")
 	else:
 		if !wieldable_animation_player.is_playing(): # Enforces fire rate.

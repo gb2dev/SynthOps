@@ -23,6 +23,7 @@ extends Node3D
 @export var nodes_to_hide_when_on : Array[Node]
 
 @export var objects_call_interact : Array[NodePath]
+@export var objects_call_data : Dictionary
 @export var objects_call_delay : float = 0.0
 var interaction_text : String 
 var interactor
@@ -55,7 +56,10 @@ func switch():
 		await get_tree().create_timer(objects_call_delay).timeout
 		if nodepath != null:
 			var object = get_node(nodepath)
-			object.interact(interactor)
+			if objects_call_data.is_empty():
+				object.interact(interactor)
+			else:
+				object.interact(interactor, objects_call_data)
 	
 	if is_on:
 		for node in nodes_to_show_when_on:
