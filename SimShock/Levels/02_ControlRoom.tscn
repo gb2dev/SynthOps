@@ -30,16 +30,16 @@ tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ycgov"]
-size = Vector3(100, 3, 100)
-
-[sub_resource type="Resource" id="Resource_kfg5b"]
+[sub_resource type="Resource" id="Resource_k2kt7"]
 resource_local_to_scene = true
 script = ExtResource("6_m234f")
 inventory_slots = Array[Resource("res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd")]([null, null, null, null, null, null, null, null])
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ycgov"]
+size = Vector3(100, 3, 100)
+
 [sub_resource type="BoxMesh" id="BoxMesh_w5ofi"]
-size = Vector3(3, 3, 2)
+size = Vector3(15, 9, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gygk"]
 transparency = 1
@@ -47,7 +47,7 @@ blend_mode = 1
 albedo_color = Color(0.913725, 0.521569, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8jc56"]
-size = Vector3(3, 3, 2)
+size = Vector3(15, 9, 1)
 
 [node name="02_ControlRoom" type="Node3D" node_paths=PackedStringArray("connectors")]
 script = ExtResource("1_qqu7t")
@@ -62,6 +62,42 @@ shadow_opacity = 0.8
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vcw12")
 
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37485e-08, 9.5, 11.25)
+size = Vector3(17, 1, 25.5)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.61612e-07, -0.5, 11.25)
+size = Vector3(17, 1, 25.5)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4.5, 11.25)
+size = Vector3(1, 9, 25.5)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.5, 11.25)
+size = Vector3(1, 9, 25.5)
+material = ExtResource("4_8lkwt")
+
+[node name="Player" parent="." instance=ExtResource("5_rvg2a")]
+transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 0, 0.8, 0)
+pause_menu = NodePath("../PauseMenu")
+player_hud = NodePath("../Player_HUD")
+inventory_data = SubResource("Resource_k2kt7")
+step_height_camera_lerp = 1.5
+
+[node name="Player_HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_2268o")]
+player = NodePath("../Player")
+use_stamina_component = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_p1p6r")]
+
 [node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 script = ExtResource("2_eqlvo")
@@ -73,44 +109,8 @@ hint_message = "Fell to your death."
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 shape = SubResource("BoxShape3D_ycgov")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 4.5)
-size = Vector3(7, 1, 10)
-material = ExtResource("4_8lkwt")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 4.5)
-size = Vector3(1, 6, 10)
-material = ExtResource("4_8lkwt")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 4.5)
-size = Vector3(1, 6, 10)
-material = ExtResource("4_8lkwt")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 4.5)
-size = Vector3(7, 1, 10)
-material = ExtResource("4_8lkwt")
-
-[node name="Player" parent="." instance=ExtResource("5_rvg2a")]
-transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 0, 0.8, 0)
-pause_menu = NodePath("../PauseMenu")
-player_hud = NodePath("../Player_HUD")
-inventory_data = SubResource("Resource_kfg5b")
-step_height_camera_lerp = 1.5
-
-[node name="Player_HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_2268o")]
-player = NodePath("../Player")
-use_stamina_component = true
-
-[node name="PauseMenu" parent="." instance=ExtResource("8_p1p6r")]
-
 [node name="TransitionZone" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.6, -6.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -1)
 script = ExtResource("9_gbg0b")
 path_to_new_scene = "res://SimShock/Levels/01_Intro.tscn"
 target_connector = "ConnectorA"

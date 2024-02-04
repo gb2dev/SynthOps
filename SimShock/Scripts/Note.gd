@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends Node3D
 
 
 @export var note_title: String = "Title"
