@@ -492,7 +492,7 @@ func _physics_process(delta):
 		if fall_damage > 0 and last_velocity.y <= fall_damage_threshold:
 			health_component.subtract(fall_damage)
 	
-	if Input.is_action_pressed("jump") and !is_movement_paused and is_on_floor():
+	if Input.is_action_just_pressed("jump") and !is_movement_paused and is_on_floor():
 		snap = Vector3.ZERO
 		is_falling = true
 		# If Stamina Component is used, this checks if there's enough stamina to jump and denies it if not.

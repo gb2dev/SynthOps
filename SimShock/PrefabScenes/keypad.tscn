@@ -6,9 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://cn3yrske0mwlf" path="res://COGITO/Assets/Audio/Kenney/jingles-pizzicato_14.ogg" id="3_tuykd"]
 [ext_resource type="Script" path="res://SimShock/Components/HackableComponent.gd" id="4_pry8l"]
 
-[node name="Keypad" type="Node3D" node_paths=PackedStringArray("label", "audio_stream_player")]
+[node name="Keypad" type="Node3D" node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("1_iqope")
-label = NodePath("Label3D")
 audio_stream_player = NodePath("AudioStreamPlayer3D")
 sound_wrong_code = ExtResource("2_xukqr")
 sound_correct_code = ExtResource("3_tuykd")

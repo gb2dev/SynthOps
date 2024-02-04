@@ -222,7 +222,7 @@ collision_layer = 3
 freeze = true
 script = ExtResource("10_ao2t8")
 default_position = Vector3(0.329, -0.264, -0.535)
-sound_hit = ExtResource("3_1sodd")
+sound_hit = ExtResource("4_d51ss")
 sound_miss = ExtResource("11_80m0n")
 
 [node name="hammer_mesh" type="MeshInstance3D" parent="Neck/Head/Wieldables/Hammer"]

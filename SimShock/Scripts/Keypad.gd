@@ -1,6 +1,7 @@
 extends Node3D
 
-@export var label: Label3D
+@onready var label: Label3D = $Label3D
+
 @export var audio_stream_player: AudioStreamPlayer3D
 @export var sound_wrong_code: AudioStream
 @export var sound_correct_code: AudioStream
