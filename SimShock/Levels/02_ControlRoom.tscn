@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bo3he1oftoayf"]
+[gd_scene load_steps=21 format=3 uid="uid://bo3he1oftoayf"]
 
 [ext_resource type="Script" path="res://COGITO/SceneManagement/cogito_scene.gd" id="1_qqu7t"]
 [ext_resource type="Script" path="res://COGITO/Scripts/hazard_zone.gd" id="2_eqlvo"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://0c32kepv0ahx" path="res://COGITO/PrefabScenes/Player_HUD.tscn" id="7_2268o"]
 [ext_resource type="PackedScene" uid="uid://rw7gdui8lu3n" path="res://COGITO/EasyMenus/Scenes/pause_menu.tscn" id="8_p1p6r"]
 [ext_resource type="Script" path="res://COGITO/Scripts/scene_transition_zone.gd" id="9_gbg0b"]
+[ext_resource type="Material" uid="uid://hhhudvarh7gk" path="res://COGITO/Assets/Materials/Prototype_Orange.tres" id="10_b31yj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lntrk"]
 sky_top_color = Color(0.576471, 0.960784, 1, 1)
@@ -30,7 +31,17 @@ tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
 
-[sub_resource type="Resource" id="Resource_k2kt7"]
+[sub_resource type="PrismMesh" id="PrismMesh_uwam6"]
+material = ExtResource("10_b31yj")
+left_to_right = 1.0
+size = Vector3(10, 3.5, 8)
+
+[sub_resource type="PrismMesh" id="PrismMesh_pm4k3"]
+material = ExtResource("10_b31yj")
+left_to_right = 1.0
+size = Vector3(20, 7, 2)
+
+[sub_resource type="Resource" id="Resource_iadws"]
 resource_local_to_scene = true
 script = ExtResource("6_m234f")
 inventory_slots = Array[Resource("res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd")]([null, null, null, null, null, null, null, null])
@@ -66,30 +77,137 @@ environment = SubResource("Environment_vcw12")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37485e-08, 9.5, 11.25)
-size = Vector3(17, 1, 25.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37485e-08, 9.5, 6.25)
+size = Vector3(17, 1, 15.5)
 material = ExtResource("4_8lkwt")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.61612e-07, -0.5, 11.25)
-size = Vector3(17, 1, 25.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53674e-07, -0.5, 14.5)
+size = Vector3(81, 1, 32)
 material = ExtResource("4_8lkwt")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4.5, 11.25)
-size = Vector3(1, 9, 25.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4.5, 6.25)
+size = Vector3(1, 9, 15.5)
 material = ExtResource("4_8lkwt")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.5, 11.25)
-size = Vector3(1, 9, 25.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.5, 6.25)
+size = Vector3(1, 9, 15.5)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 9.5, 13.5)
+size = Vector3(31, 19, 1)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 9.5, 13.5)
+size = Vector3(31, 19, 1)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 9.5, 38.75)
+size = Vector3(1, 19, 51.5)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 9.5, 38.75)
+size = Vector3(1, 19, 51.5)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 64)
+size = Vector3(79, 19, 1)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53674e-07, 19.5, 31.5)
+size = Vector3(81, 1, 66)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.5, 13.5)
+size = Vector3(17, 9, 1)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 56)
+size = Vector3(81, 1, 15)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499999, 3.5, 39.5)
+size = Vector3(80, 7, 18)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 3.5, 29.5)
+size = Vector3(11, 7, 2)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 3.5, 29.5)
+size = Vector3(11, 7, 2)
+material = ExtResource("4_8lkwt")
+
+[node name="Ramp" type="CSGMesh3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.75, 35.5)
+operation = 2
+use_collision = true
+mesh = SubResource("PrismMesh_uwam6")
+
+[node name="Ramp" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 18.5, 3.55, 29.5)
+use_collision = true
+mesh = SubResource("PrismMesh_pm4k3")
+
+[node name="Ramp2" type="CSGMesh3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18.5, 3.55, 29.5)
+use_collision = true
+mesh = SubResource("PrismMesh_pm4k3")
+
+[node name="Ramp3" type="CSGMesh3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1.75, 35.5)
+use_collision = true
+mesh = SubResource("PrismMesh_uwam6")
+
+[node name="Ramp4" type="CSGMesh3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, -8.74228e-08, -1, -3.82137e-15, 1, -8.74228e-08, 4.37114e-08, 8, -1.75, 35.5)
+use_collision = true
+mesh = SubResource("PrismMesh_uwam6")
+
+[node name="Ramp5" type="CSGMesh3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, -8.74228e-08, -1, -3.82137e-15, 1, -8.74228e-08, 4.37114e-08, -8, -1.75, 35.5)
+use_collision = true
+mesh = SubResource("PrismMesh_uwam6")
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -1.5, 45)
+size = Vector3(1, 4, 9)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, -1.5, 45)
+size = Vector3(1, 4, 9)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -4, 45)
+size = Vector3(10, 1, 9)
 material = ExtResource("4_8lkwt")
 
 [node name="Player" parent="." instance=ExtResource("5_rvg2a")]
 transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 0, 0.8, 0)
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
-inventory_data = SubResource("Resource_k2kt7")
+inventory_data = SubResource("Resource_iadws")
 step_height_camera_lerp = 1.5
 
 [node name="Player_HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_2268o")]

@@ -101,7 +101,7 @@ albedo_color = Color(0.913725, 0.521569, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_uobrk"]
 size = Vector3(15, 9, 1)
 
-[sub_resource type="Resource" id="Resource_w015x"]
+[sub_resource type="Resource" id="Resource_qn88u"]
 resource_local_to_scene = true
 script = ExtResource("13_4gj5i")
 inventory_slots = Array[ExtResource("11_634qn")]([null, null, null, null, null, null, null, null])
@@ -191,7 +191,7 @@ script = ExtResource("11_634qn")
 inventory_item = ExtResource("12_l7roe")
 quantity = 2
 
-[sub_resource type="Resource" id="Resource_brfgy"]
+[sub_resource type="Resource" id="Resource_dkjyc"]
 resource_local_to_scene = true
 script = ExtResource("13_4gj5i")
 inventory_slots = Array[ExtResource("11_634qn")]([SubResource("Resource_wdflo"), SubResource("Resource_hpi7r"), null, null])
@@ -1127,7 +1127,7 @@ transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 0, -6.
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 fall_damage = 20
-inventory_data = SubResource("Resource_w015x")
+inventory_data = SubResource("Resource_qn88u")
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0
@@ -1631,7 +1631,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="Chest" parent="01_Intro_OLD/INTERACTIVE_OBJECTS" groups=["external_inventory"] instance=ExtResource("9_dsf0h")]
 transform = Transform3D(0.125576, 0, -0.992084, 0, 1, 0, 0.992084, 0, 0.125576, -6.78933, 0.0425703, 7.37176)
 inventory_name = "Chest"
-inventory_data = SubResource("Resource_brfgy")
+inventory_data = SubResource("Resource_dkjyc")
 
 [node name="PressAndHold" parent="01_Intro_OLD/INTERACTIVE_OBJECTS" node_paths=PackedStringArray("nodes_to_trigger") instance=ExtResource("14_7d8sh")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -34.7594, 3.76304, 7.5)
