@@ -17,11 +17,11 @@ var player_interaction_component
 
 # This gets called by player interaction compoment when the wieldable is equipped and primary action is pressed
 func action_primary(_camera_collision:Vector3, _passed_item_reference : InventoryItemPD):
-	hack()
+	hack(_passed_item_reference)
 	print("OmniTool.gd: action_primary called. Self: ", self)
 
 
-func hack():
+func hack(_passed_item_reference : InventoryItemPD):
 	var space = get_world_3d().direct_space_state
 	var camera = get_viewport().get_camera_3d()
 	var query = PhysicsRayQueryParameters3D.create(camera.global_position,
@@ -34,6 +34,7 @@ func hack():
 			Audio.play_sound(sound_hack)
 			return
 	Audio.play_sound(sound_no_hack)
+	_passed_item_reference.subtract(-1)
 
 
 func action_secondary(is_released:bool):
