@@ -47,7 +47,7 @@ material = ExtResource("10_b31yj")
 left_to_right = 1.0
 size = Vector3(2, 2, 3.5)
 
-[sub_resource type="Resource" id="Resource_ybdnu"]
+[sub_resource type="Resource" id="Resource_s5jyk"]
 resource_local_to_scene = true
 script = ExtResource("6_m234f")
 inventory_slots = Array[Resource("res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd")]([null, null, null, null, null, null, null, null])
@@ -165,11 +165,11 @@ mesh = SubResource("PrismMesh_uwam6")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 4, 30.49)
 text = "← Control Room →
 
-Power Stations ↓"
+Power Module ↓"
 
 [node name="Label3D2" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.3, 53.49)
-text = "← Power Station A                Power Station B →"
+text = "← Power Module A                Power Module B →"
 
 [node name="Ramp" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 18.5, 3.5, 29.5)
@@ -353,7 +353,7 @@ mesh = SubResource("PrismMesh_kx8mf")
 transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 0, 0.8, 0)
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
-inventory_data = SubResource("Resource_ybdnu")
+inventory_data = SubResource("Resource_s5jyk")
 step_height_camera_lerp = 1.5
 
 [node name="Player_HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_2268o")]
