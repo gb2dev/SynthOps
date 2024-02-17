@@ -38,6 +38,7 @@ func _ready():
 		interaction_text = interaction_text_when_off
 
 func interact(interaction_component):
+	print(name)
 	interactor = interaction_component
 	if !allows_repeated_interaction and is_on:
 		interactor.send_hint(null, has_been_used_hint)
@@ -53,7 +54,8 @@ func switch():
 	is_on = !is_on
 	
 	for nodepath in objects_call_interact:
-		await get_tree().create_timer(objects_call_delay).timeout
+		if objects_call_delay > 0:
+			await get_tree().create_timer(objects_call_delay).timeout
 		if nodepath != null:
 			var object = get_node(nodepath)
 			if objects_call_data.is_empty():

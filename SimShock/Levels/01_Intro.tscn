@@ -74,7 +74,7 @@ albedo_color = Color(0.913725, 0.521569, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_uobrk"]
 size = Vector3(15, 6, 1)
 
-[sub_resource type="Resource" id="Resource_qf6mm"]
+[sub_resource type="Resource" id="Resource_d73ah"]
 resource_local_to_scene = true
 script = ExtResource("13_4gj5i")
 inventory_slots = Array[ExtResource("11_634qn")]([null, null, null, null, null, null, null, null])
@@ -463,94 +463,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 3.5)
 size = Vector3(1, 6, 36)
 material = ExtResource("2_7i5xn")
 
-[node name="Shelf2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, -7, 112.5)
-
-[node name="CSGBox3D26" type="CSGBox3D" parent="Shelf2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.5, 6.5)
-use_collision = true
-size = Vector3(0.2, 3, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D27" type="CSGBox3D" parent="Shelf2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.55, 6.5)
-use_collision = true
-size = Vector3(1, 0.1, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D28" type="CSGBox3D" parent="Shelf2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.05, 6.5)
-use_collision = true
-size = Vector3(1, 0.1, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D29" type="CSGBox3D" parent="Shelf2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.55, 6.5)
-use_collision = true
-size = Vector3(1, 0.1, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D30" type="CSGBox3D" parent="Shelf2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.05, 6.5)
-use_collision = true
-size = Vector3(1, 0.1, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D31" type="CSGBox3D" parent="Shelf2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.55, 6.5)
-use_collision = true
-size = Vector3(1, 0.1, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="Shelf3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, -7, 112.5)
-
-[node name="CSGBox3D25" type="CSGBox3D" parent="Shelf3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 3, 6.5)
-use_collision = true
-size = Vector3(0.2, 6, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D26" type="CSGBox3D" parent="Shelf3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, 3, 0.0505066)
-use_collision = true
-size = Vector3(8.8, 6, 0.1)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D32" type="CSGBox3D" parent="Shelf3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, 4.5, 12.9505)
-use_collision = true
-size = Vector3(8.8, 9, 0.1)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D27" type="CSGBox3D" parent="Shelf3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.55, 6.5)
-use_collision = true
-size = Vector3(1, 0.1, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D28" type="CSGBox3D" parent="Shelf3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 1.05, 6.5)
-use_collision = true
-size = Vector3(1, 0.1, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D29" type="CSGBox3D" parent="Shelf3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 1.55, 6.5)
-use_collision = true
-size = Vector3(1, 0.1, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D30" type="CSGBox3D" parent="Shelf3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 2.05, 6.5)
-use_collision = true
-size = Vector3(1, 0.1, 13)
-material = ExtResource("2_7i5xn")
-
-[node name="CSGBox3D31" type="CSGBox3D" parent="Shelf3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 2.55, 6.5)
-use_collision = true
-size = Vector3(1, 0.1, 13)
+[node name="CSGBox3D18" type="CSGBox3D" parent="CSGCombiner3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, -4.5)
+size = Vector3(10, 4, 20)
 material = ExtResource("2_7i5xn")
 
 [node name="ElevatorDoor" type="Node3D" parent="."]
@@ -768,23 +683,23 @@ stream = ExtResource("22_lx3jm")
 bus = &"SFX"
 
 [node name="Camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_nbkyt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, -1.5, 113)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, -3.5, 113)
 player = NodePath("../Player")
 
 [node name="Camera2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_nbkyt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, -1.5, 119)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, -3.5, 119)
 player = NodePath("../Player")
 
 [node name="Camera3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_nbkyt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, -1.5, 125)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, -3.5, 125)
 player = NodePath("../Player")
 
 [node name="Camera4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_nbkyt")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, -1.5, 116)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5, -3.5, 116)
 player = NodePath("../Player")
 
 [node name="Camera5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_nbkyt")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, -1.5, 122)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5, -3.5, 122)
 player = NodePath("../Player")
 
 [node name="TransitionZone" type="Area3D" parent="."]
@@ -813,7 +728,7 @@ transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 0, 0.8
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 fall_damage = 20
-inventory_data = SubResource("Resource_qf6mm")
+inventory_data = SubResource("Resource_d73ah")
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0

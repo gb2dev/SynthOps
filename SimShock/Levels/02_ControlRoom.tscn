@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bo3he1oftoayf"]
+[gd_scene load_steps=30 format=3 uid="uid://bo3he1oftoayf"]
 
 [ext_resource type="Script" path="res://COGITO/SceneManagement/cogito_scene.gd" id="1_qqu7t"]
 [ext_resource type="Script" path="res://COGITO/Scripts/hazard_zone.gd" id="2_eqlvo"]
@@ -11,6 +11,9 @@
 [ext_resource type="Script" path="res://COGITO/Scripts/scene_transition_zone.gd" id="9_gbg0b"]
 [ext_resource type="Material" uid="uid://hhhudvarh7gk" path="res://COGITO/Assets/Materials/Prototype_Orange.tres" id="10_b31yj"]
 [ext_resource type="Material" uid="uid://dhg1uhiq7ywn2" path="res://COGITO/Assets/Materials/Prototype_Green.tres" id="11_pq1qx"]
+[ext_resource type="Script" path="res://COGITO/Scripts/Cogito_Switch.gd" id="12_bgp66"]
+[ext_resource type="AudioStream" uid="uid://b6wdy2102jymr" path="res://COGITO/Assets/Audio/Kenney/UiAudio/switch2.ogg" id="13_etxvt"]
+[ext_resource type="PackedScene" uid="uid://lsun1f1wjfxl" path="res://COGITO/PrefabScenes/ceiling_lamp.tscn" id="14_jdbtv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lntrk"]
 sky_top_color = Color(0.576471, 0.960784, 1, 1)
@@ -47,7 +50,7 @@ material = ExtResource("10_b31yj")
 left_to_right = 1.0
 size = Vector3(2, 2, 3.5)
 
-[sub_resource type="Resource" id="Resource_s5jyk"]
+[sub_resource type="Resource" id="Resource_sag3u"]
 resource_local_to_scene = true
 script = ExtResource("6_m234f")
 inventory_slots = Array[Resource("res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd")]([null, null, null, null, null, null, null, null])
@@ -65,6 +68,23 @@ albedo_color = Color(0.913725, 0.521569, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8jc56"]
 size = Vector3(15, 6, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1pnfi"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj7uj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_45ln7"]
+material = SubResource("StandardMaterial3D_kj7uj")
+radius = 0.1
+height = 0.2
+radial_segments = 12
+rings = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_4wfbr"]
+size = Vector3(0.3, 0.3, 0.1)
 
 [node name="02_ControlRoom" type="Node3D" node_paths=PackedStringArray("connectors")]
 script = ExtResource("1_qqu7t")
@@ -188,11 +208,6 @@ mesh = SubResource("PrismMesh_uwam6")
 
 [node name="Ramp4" type="CSGMesh3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 5, -1.75, 50.5)
-use_collision = true
-mesh = SubResource("PrismMesh_kx8mf")
-
-[node name="Ramp5" type="CSGMesh3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 3, -1.75, 54.5)
 use_collision = true
 mesh = SubResource("PrismMesh_kx8mf")
 
@@ -344,16 +359,11 @@ transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.3
 use_collision = true
 mesh = SubResource("PrismMesh_kx8mf")
 
-[node name="Ramp19" type="CSGMesh3D" parent="CSGCombiner3D3"]
-transform = Transform3D(1, 5.96046e-08, -3.55271e-15, 0, -4.37114e-08, 1, 5.96046e-08, -1, -4.37114e-08, -3, -1.75, 54.5)
-use_collision = true
-mesh = SubResource("PrismMesh_kx8mf")
-
 [node name="Player" parent="." instance=ExtResource("5_rvg2a")]
-transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 0, 0.8, 0)
+transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, -13, -5.2, 30)
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
-inventory_data = SubResource("Resource_s5jyk")
+inventory_data = SubResource("Resource_sag3u")
 step_height_camera_lerp = 1.5
 
 [node name="Player_HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_2268o")]
@@ -503,6 +513,133 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.6756
 use_collision = true
 size = Vector3(30, 6, 1)
 material = ExtResource("4_8lkwt")
+
+[node name="ButtonChain" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("nodes_to_show_when_on", "nodes_to_hide_when_on")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -15, -6, 29)
+collision_layer = 3
+script = ExtResource("12_bgp66")
+switch_sound = ExtResource("13_etxvt")
+nodes_to_show_when_on = [NodePath("MeshInstance3D")]
+nodes_to_hide_when_on = [NodePath("MeshInstance3D")]
+objects_call_interact = Array[NodePath]([NodePath("../CeilingLamp")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonChain"]
+shape = SubResource("CapsuleShape3D_1pnfi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ButtonChain"]
+mesh = SubResource("CapsuleMesh_45ln7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ButtonChain"]
+bus = &"SFX"
+
+[node name="Button_Case" type="MeshInstance3D" parent="ButtonChain"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -0.03087, 0.0244007)
+mesh = SubResource("BoxMesh_4wfbr")
+skeleton = NodePath("../../..")
+
+[node name="ButtonChain2" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("nodes_to_show_when_on", "nodes_to_hide_when_on")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14.5, -6, 29)
+collision_layer = 3
+script = ExtResource("12_bgp66")
+switch_sound = ExtResource("13_etxvt")
+nodes_to_show_when_on = [NodePath("MeshInstance3D")]
+nodes_to_hide_when_on = [NodePath("MeshInstance3D")]
+objects_call_interact = Array[NodePath]([NodePath("../CeilingLamp2"), NodePath("../CeilingLamp3")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonChain2"]
+shape = SubResource("CapsuleShape3D_1pnfi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ButtonChain2"]
+mesh = SubResource("CapsuleMesh_45ln7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ButtonChain2"]
+bus = &"SFX"
+
+[node name="Button_Case" type="MeshInstance3D" parent="ButtonChain2"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -0.03087, 0.0244007)
+mesh = SubResource("BoxMesh_4wfbr")
+skeleton = NodePath("../../..")
+
+[node name="ButtonChain3" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("nodes_to_show_when_on", "nodes_to_hide_when_on")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14, -6, 29)
+collision_layer = 3
+script = ExtResource("12_bgp66")
+switch_sound = ExtResource("13_etxvt")
+nodes_to_show_when_on = [NodePath("MeshInstance3D")]
+nodes_to_hide_when_on = [NodePath("MeshInstance3D")]
+objects_call_interact = Array[NodePath]([NodePath("../CeilingLamp"), NodePath("../CeilingLamp2")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonChain3"]
+shape = SubResource("CapsuleShape3D_1pnfi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ButtonChain3"]
+mesh = SubResource("CapsuleMesh_45ln7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ButtonChain3"]
+bus = &"SFX"
+
+[node name="Button_Case" type="MeshInstance3D" parent="ButtonChain3"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -0.03087, 0.0244007)
+mesh = SubResource("BoxMesh_4wfbr")
+skeleton = NodePath("../../..")
+
+[node name="ButtonChain4" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("nodes_to_show_when_on", "nodes_to_hide_when_on")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13.5, -6, 29)
+collision_layer = 3
+script = ExtResource("12_bgp66")
+switch_sound = ExtResource("13_etxvt")
+nodes_to_show_when_on = [NodePath("MeshInstance3D")]
+nodes_to_hide_when_on = [NodePath("MeshInstance3D")]
+objects_call_interact = Array[NodePath]([NodePath("../CeilingLamp"), NodePath("../CeilingLamp2"), NodePath("../CeilingLamp4")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonChain4"]
+shape = SubResource("CapsuleShape3D_1pnfi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ButtonChain4"]
+mesh = SubResource("CapsuleMesh_45ln7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ButtonChain4"]
+bus = &"SFX"
+
+[node name="Button_Case" type="MeshInstance3D" parent="ButtonChain4"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -0.03087, 0.0244007)
+mesh = SubResource("BoxMesh_4wfbr")
+skeleton = NodePath("../../..")
+
+[node name="ButtonChain5" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("nodes_to_show_when_on", "nodes_to_hide_when_on")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13, -6, 29)
+collision_layer = 3
+script = ExtResource("12_bgp66")
+switch_sound = ExtResource("13_etxvt")
+nodes_to_show_when_on = [NodePath("MeshInstance3D")]
+nodes_to_hide_when_on = [NodePath("MeshInstance3D")]
+objects_call_interact = Array[NodePath]([NodePath("../CeilingLamp2")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonChain5"]
+shape = SubResource("CapsuleShape3D_1pnfi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ButtonChain5"]
+mesh = SubResource("CapsuleMesh_45ln7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ButtonChain5"]
+bus = &"SFX"
+
+[node name="Button_Case" type="MeshInstance3D" parent="ButtonChain5"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -0.03087, 0.0244007)
+mesh = SubResource("BoxMesh_4wfbr")
+skeleton = NodePath("../../..")
+
+[node name="CeilingLamp" parent="." instance=ExtResource("14_jdbtv")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -15.5, -5.3, 20.98)
+
+[node name="CeilingLamp2" parent="." instance=ExtResource("14_jdbtv")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -14.5, -5.3, 20.98)
+
+[node name="CeilingLamp3" parent="." instance=ExtResource("14_jdbtv")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -13.5, -5.3, 20.98)
+
+[node name="CeilingLamp4" parent="." instance=ExtResource("14_jdbtv")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -12.5, -5.3, 20.98)
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="body_exited" from="KillZone" to="KillZone" method="_on_body_exited"]
