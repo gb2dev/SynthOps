@@ -1,4 +1,7 @@
+class_name CogitoSwitch
 extends Node3D
+
+signal switched
 
 @onready var audio_stream_player_3d = $AudioStreamPlayer3D
 
@@ -25,20 +28,19 @@ extends Node3D
 @export var objects_call_interact : Array[NodePath]
 @export var objects_call_data : Dictionary
 @export var objects_call_delay : float = 0.0
-var interaction_text : String 
+var interaction_text : String
 var interactor
 
 func _ready():
 	add_to_group("Save_object_state")
 	audio_stream_player_3d.stream = switch_sound
-	
+
 	if is_on:
 		interaction_text = interaction_text_when_on
 	else:
 		interaction_text = interaction_text_when_off
 
 func interact(interaction_component):
-	print(name)
 	interactor = interaction_component
 	if !allows_repeated_interaction and is_on:
 		interactor.send_hint(null, has_been_used_hint)
@@ -52,7 +54,7 @@ func interact(interaction_component):
 func switch():
 	audio_stream_player_3d.play()
 	is_on = !is_on
-	
+
 	for nodepath in objects_call_interact:
 		if objects_call_delay > 0:
 			await get_tree().create_timer(objects_call_delay).timeout
@@ -62,25 +64,26 @@ func switch():
 				object.interact(interactor)
 			else:
 				object.interact(interactor, objects_call_data)
-	
+
 	if is_on:
 		for node in nodes_to_show_when_on:
 			node.show()
-		
+
 		for node in nodes_to_hide_when_on:
 			node.hide()
-			
+
 		interaction_text = interaction_text_when_on
 	else:
 		for node in nodes_to_show_when_on:
 			node.hide()
-		
+
 		for node in nodes_to_hide_when_on:
 			node.show()
-			
+
 		interaction_text = interaction_text_when_off
-		
-		
+
+	switched.emit()
+
 func check_for_item() -> bool:
 	var inventory = interactor.get_parent().inventory_data
 	for slot_data in inventory.inventory_slots:
@@ -89,30 +92,30 @@ func check_for_item() -> bool:
 			if slot_data.inventory_item.discard_after_use:
 				inventory.remove_slot_data(slot_data)
 			return true
-	
+
 	if item_hint != "":
 		interactor.send_hint(null,item_hint) # Sends the key hint with the default hint icon.
 	return false
-	
-	
+
+
 func set_state():
 	if is_on:
 		for node in nodes_to_show_when_on:
 			node.show()
-		
+
 		for node in nodes_to_hide_when_on:
 			node.hide()
-			
+
 		interaction_text = interaction_text_when_on
 	else:
 		for node in nodes_to_show_when_on:
 			node.hide()
-		
+
 		for node in nodes_to_hide_when_on:
 			node.show()
-			
+
 		interaction_text = interaction_text_when_off
-	
+
 
 func save():
 	var state_dict = {
@@ -124,6 +127,6 @@ func save():
 		"rot_x" : rotation.x,
 		"rot_y" : rotation.y,
 		"rot_z" : rotation.z,
-		
+
 	}
 	return state_dict
