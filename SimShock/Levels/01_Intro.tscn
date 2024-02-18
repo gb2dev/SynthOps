@@ -1,6 +1,5 @@
 [gd_scene load_steps=39 format=3 uid="uid://6g5bnwo06rup"]
 
-[ext_resource type="Script" path="res://COGITO/SceneManagement/cogito_scene.gd" id="1_i0htm"]
 [ext_resource type="Material" uid="uid://dkbgl3p3ffd1" path="res://COGITO/Assets/Materials/Prototype_DarkGrey.tres" id="2_7i5xn"]
 [ext_resource type="Material" uid="uid://hhhudvarh7gk" path="res://COGITO/Assets/Materials/Prototype_Orange.tres" id="3_ps38b"]
 [ext_resource type="PackedScene" uid="uid://bdyukj85qkut0" path="res://COGITO/PrefabScenes/door.tscn" id="4_eqk81"]
@@ -27,6 +26,20 @@
 [ext_resource type="PackedScene" uid="uid://bcea3423e7v8m" path="res://SimShock/PrefabScenes/keypad.tscn" id="48_btwpf"]
 [ext_resource type="PackedScene" uid="uid://cxwwd4mjnn34w" path="res://COGITO/PrefabScenes/Shelf.tscn" id="49_1pwjx"]
 [ext_resource type="PackedScene" uid="uid://k2o0y1lbobjf" path="res://SimShock/PrefabScenes/pickup_note.tscn" id="50_wxrui"]
+
+[sub_resource type="GDScript" id="GDScript_psi74"]
+script/source = "extends CogitoScene
+
+
+func _ready():
+	print(\"Offices Access \", FacilityState.offices_access)
+	if FacilityState.offices_access:
+		$OfficesDoor.queue_free()
+
+	print(\"Storage Access \", FacilityState.storage_access)
+	if FacilityState.storage_access:
+		$StorageDoor.queue_free()
+"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2veog"]
 sky_top_color = Color(0.576471, 0.960784, 1, 1)
@@ -74,13 +87,13 @@ albedo_color = Color(0.913725, 0.521569, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_uobrk"]
 size = Vector3(15, 6, 1)
 
-[sub_resource type="Resource" id="Resource_28pf6"]
+[sub_resource type="Resource" id="Resource_vkkby"]
 resource_local_to_scene = true
 script = ExtResource("13_4gj5i")
 inventory_slots = Array[ExtResource("11_634qn")]([null, null, null, null, null, null, null, null])
 
 [node name="01_Intro" type="Node3D" node_paths=PackedStringArray("connectors")]
-script = ExtResource("1_i0htm")
+script = SubResource("GDScript_psi74")
 connectors = [NodePath("ConnectorA")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -132,6 +145,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -1)
 size = Vector3(7, 8, 1)
 material = ExtResource("2_7i5xn")
 
+[node name="OfficesDoor" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27, 3, 36)
+use_collision = true
+size = Vector3(5, 6, 1)
+material = ExtResource("3_ps38b")
+
+[node name="StorageDoor" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27, 3, 36)
+use_collision = true
+size = Vector3(5, 6, 1)
+material = ExtResource("3_ps38b")
+
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
 use_collision = true
 
@@ -160,13 +185,9 @@ operation = 2
 size = Vector3(5, 6, 1)
 material = ExtResource("3_ps38b")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27, 3, 36)
-size = Vector3(5, 6, 1)
-material = ExtResource("3_ps38b")
-
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27, 3, 36)
+operation = 2
 size = Vector3(5, 6, 1)
 material = ExtResource("3_ps38b")
 
@@ -181,6 +202,12 @@ transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, 
 radius = 5.0
 height = 10.0
 material = ExtResource("2_7i5xn")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27, 3, 36)
+operation = 2
+size = Vector3(5, 6, 1)
+material = ExtResource("3_ps38b")
 
 [node name="CSGCombiner3D3" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 65)
@@ -718,7 +745,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_uobrk")
 
 [node name="ConnectorA" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5, -6.75, 130)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5, -5.75, 130)
 
 [node name="RayCast3D" type="RayCast3D" parent="ConnectorA"]
 target_position = Vector3(0, 0, -1)
@@ -728,13 +755,12 @@ transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 0, 0.8
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 fall_damage = 20
-inventory_data = SubResource("Resource_28pf6")
-WALKING_SPEED = 4.0
+inventory_data = SubResource("Resource_vkkby")
+WALKING_SPEED = 40.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0
 WIGGLE_ON_WALKING_INTENSITY = 0.05
 WIGGLE_ON_SPRINTING_INTENSITY = 0.1
-step_height_camera_lerp = 1.5
 
 [node name="Player_HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("41_taj6d")]
 player = NodePath("../Player")

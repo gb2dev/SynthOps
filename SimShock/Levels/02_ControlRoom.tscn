@@ -51,11 +51,6 @@ material = ExtResource("10_b31yj")
 left_to_right = 1.0
 size = Vector3(2, 2, 3.5)
 
-[sub_resource type="Resource" id="Resource_4u40h"]
-resource_local_to_scene = true
-script = ExtResource("6_m234f")
-inventory_slots = Array[Resource("res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd")]([null, null, null, null, null, null, null, null])
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ycgov"]
 size = Vector3(100, 3, 100)
 
@@ -128,11 +123,11 @@ func _on_power_module_restored(power_module : Node3D) -> void:
 
 
 func _on_offices_access_button_switched():
-	pass # Replace with function body.
+	FacilityState.offices_access = true
 
 
 func _on_storage_access_button_switched():
-	pass # Replace with function body.
+	FacilityState.storage_access = true
 "
 
 [sub_resource type="BoxMesh" id="BoxMesh_2mrqd"]
@@ -140,6 +135,11 @@ size = Vector3(5, 1, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pamb8"]
 size = Vector3(5, 1, 1.5)
+
+[sub_resource type="Resource" id="Resource_4vuvs"]
+resource_local_to_scene = true
+script = ExtResource("6_m234f")
+inventory_slots = Array[Resource("res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd")]([null, null, null, null, null, null, null, null])
 
 [node name="02_ControlRoom" type="Node3D" node_paths=PackedStringArray("connectors")]
 script = ExtResource("1_qqu7t")
@@ -413,19 +413,6 @@ material = ExtResource("4_8lkwt")
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 3, -1.75, 54.5)
 use_collision = true
 mesh = SubResource("PrismMesh_kx8mf")
-
-[node name="Player" parent="." instance=ExtResource("5_rvg2a")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.8, 0)
-pause_menu = NodePath("../PauseMenu")
-player_hud = NodePath("../Player_HUD")
-inventory_data = SubResource("Resource_4u40h")
-step_height_camera_lerp = 1.5
-
-[node name="Player_HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_2268o")]
-player = NodePath("../Player")
-use_stamina_component = true
-
-[node name="PauseMenu" parent="." instance=ExtResource("8_p1p6r")]
 
 [node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
@@ -900,6 +887,24 @@ skeleton = NodePath("../../../..")
 [node name="Txt_StorageAccess" type="Label3D" parent="ControlPanel/StorageAccessButton"]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, -0.09, -0.299999)
 text = "Storage Access"
+
+[node name="Player" parent="." instance=ExtResource("5_rvg2a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.8, 0)
+pause_menu = NodePath("../PauseMenu")
+player_hud = NodePath("../Player_HUD")
+fall_damage = 20
+inventory_data = SubResource("Resource_4vuvs")
+WALKING_SPEED = 40.0
+SPRINTING_SPEED = 6.0
+CROUCHING_SPEED = 2.0
+WIGGLE_ON_WALKING_INTENSITY = 0.05
+WIGGLE_ON_SPRINTING_INTENSITY = 0.1
+
+[node name="Player_HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_2268o")]
+player = NodePath("../Player")
+use_stamina_component = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_p1p6r")]
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="body_exited" from="KillZone" to="KillZone" method="_on_body_exited"]
