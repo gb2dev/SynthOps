@@ -39,6 +39,10 @@ window/size/initial_position_type=3
 
 enabled=PackedStringArray("res://addons/input_helper/plugin.cfg", "res://addons/quick_audio/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [importer_defaults]
 
 wav={
