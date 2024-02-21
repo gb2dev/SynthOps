@@ -1,4 +1,4 @@
 extends Node
 
-var offices_access := false
-var storage_access := false
+var offices_access := true
+var storage_access := true
