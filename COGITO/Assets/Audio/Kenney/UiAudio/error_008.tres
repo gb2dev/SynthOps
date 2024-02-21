@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Caption" load_steps=2 format=3 uid="uid://belv4sjnujt17"]
+
+[ext_resource type="Script" path="res://SimShock/Scripts/Caption/Caption.gd" id="1_n37hf"]
+
+[resource]
+script = ExtResource("1_n37hf")
+speaker = ""
+text = "[Error]"

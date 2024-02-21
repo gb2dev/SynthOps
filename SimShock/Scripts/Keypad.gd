@@ -1,8 +1,8 @@
 extends Node3D
 
 @onready var label: Label3D = $Label3D
+@onready var audio_stream_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
-@export var audio_stream_player: AudioStreamPlayer3D
 @export var sound_wrong_code: AudioStream
 @export var sound_correct_code: AudioStream
 @export var correct_code: String
@@ -40,6 +40,7 @@ func interact(interactor: Node3D, data: Dictionary):
 			label.text = "----"
 			audio_stream_player.stream = sound_wrong_code
 		audio_stream_player.play()
+		CaptionManager.show_caption(audio_stream_player.stream)
 	else:
 		current_index += 1
 

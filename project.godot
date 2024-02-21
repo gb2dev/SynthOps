@@ -28,6 +28,7 @@ InputHelper="*res://addons/input_helper/input_helper.gd"
 Audio="*res://addons/quick_audio/./Audio.gd"
 CogitoSceneManager="*res://COGITO/SceneManagement/cogito_scene_manager.gd"
 FacilityState="*res://SimShock/Scripts/FacilityState.gd"
+CaptionManager="*res://SimShock/Scripts/Caption/CaptionManager.gd"
 
 [display]
 

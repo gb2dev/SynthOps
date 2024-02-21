@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bo3he1oftoayf"]
+[gd_scene load_steps=36 format=3 uid="uid://bo3he1oftoayf"]
 
 [ext_resource type="Script" path="res://COGITO/SceneManagement/cogito_scene.gd" id="1_qqu7t"]
 [ext_resource type="Script" path="res://COGITO/Scripts/hazard_zone.gd" id="2_eqlvo"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://COGITO/Scripts/Cogito_Switch.gd" id="12_bgp66"]
 [ext_resource type="AudioStream" uid="uid://b6wdy2102jymr" path="res://COGITO/Assets/Audio/Kenney/UiAudio/switch2.ogg" id="13_etxvt"]
 [ext_resource type="PackedScene" uid="uid://lsun1f1wjfxl" path="res://COGITO/PrefabScenes/ceiling_lamp.tscn" id="14_jdbtv"]
+[ext_resource type="PackedScene" uid="uid://crlrjhai45gqh" path="res://SimShock/PrefabScenes/caption_ui.tscn" id="15_cen6f"]
 [ext_resource type="AudioStream" uid="uid://cn3yrske0mwlf" path="res://COGITO/Assets/Audio/Kenney/jingles-pizzicato_14.ogg" id="15_ihng2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lntrk"]
@@ -136,7 +137,7 @@ size = Vector3(5, 1, 1.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pamb8"]
 size = Vector3(5, 1, 1.5)
 
-[sub_resource type="Resource" id="Resource_rugo8"]
+[sub_resource type="Resource" id="Resource_dnsse"]
 resource_local_to_scene = true
 script = ExtResource("6_m234f")
 inventory_slots = Array[Resource("res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd")]([null, null, null, null, null, null, null, null])
@@ -893,7 +894,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.8
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 fall_damage = 20
-inventory_data = SubResource("Resource_rugo8")
+inventory_data = SubResource("Resource_dnsse")
 WALKING_SPEED = 40.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0
@@ -903,6 +904,9 @@ WIGGLE_ON_SPRINTING_INTENSITY = 0.1
 [node name="Player_HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_2268o")]
 player = NodePath("../Player")
 use_stamina_component = true
+
+[node name="CaptionUI" parent="." instance=ExtResource("15_cen6f")]
+visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_p1p6r")]
 

@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 		close()
 
 
-func open(title : String, content : String) -> void:
+func open(title: String, content: String) -> void:
 	title_label.text = title
 	content_label.text = content
 	visible = true
