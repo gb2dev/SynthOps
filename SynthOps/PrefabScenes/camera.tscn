@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdljqy4aa3hmy"]
+
+[ext_resource type="Script" path="res://SynthOps/Scripts/Camera.gd" id="1_gqpmk"]
+[ext_resource type="Material" uid="uid://cv3uux6tuc411" path="res://SynthOps/Assets/Materials/camera_cone_default.tres" id="2_y1aqn"]
+[ext_resource type="Material" uid="uid://cpq3alvr8uf0t" path="res://SynthOps/Assets/Materials/camera_cone_detected.tres" id="3_oi4g3"]
+
+[sub_resource type="Animation" id="Animation_tu687"]
+resource_name = "rotate"
+length = 6.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RotationPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.698132, -0.698132, 0), Vector3(-0.698132, -0.698132, 0), Vector3(-0.698132, 0.698132, 0), Vector3(-0.698132, 0.698132, 0), Vector3(-0.698132, -0.698132, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a820c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RotationPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.698132, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0l8qh"]
+_data = {
+"RESET": SubResource("Animation_a820c"),
+"rotate": SubResource("Animation_tu687")
+}
+
+[node name="Camera" type="Node3D"]
+script = ExtResource("1_gqpmk")
+cone_material_default = ExtResource("2_y1aqn")
+cone_material_detected = ExtResource("3_oi4g3")
+
+[node name="RotationPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="RotationPoint"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.25)
+radius = 0.2
+height = 0.5
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="RotationPoint"]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, -1, 0, 1, -2.98023e-08, 0, 0, -8)
+height = 15.0
+sides = 16
+cone = true
+material = ExtResource("2_y1aqn")
+
+[node name="RayCast3D" type="RayCast3D" parent="RotationPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+target_position = Vector3(0, 0, -20)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0l8qh")
+}
+autoplay = "rotate"

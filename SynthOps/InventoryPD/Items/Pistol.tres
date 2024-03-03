@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="InventoryItemPD" load_steps=5 format=3 uid="uid://chuvhymiwp827"]
+
+[ext_resource type="Texture2D" uid="uid://dndeovlfpl7ih" path="res://SynthOps/Assets/Graphics/ItemIcons/Pistol.png" id="1_oj6s6"]
+[ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventoryItemPD.gd" id="2_2d7pa"]
+[ext_resource type="AudioStream" uid="uid://1w0db1u6lv7t" path="res://COGITO/Assets/Audio/Kenney/UiAudio/rollover6.ogg" id="3_4kqhn"]
+[ext_resource type="AudioStream" uid="uid://npav2p2tk10i" path="res://COGITO/Assets/Audio/Kenney/handleSmallLeather.ogg" id="4_7vvnl"]
+
+[resource]
+script = ExtResource("2_2d7pa")
+item_type = 1
+name = "Pistol"
+descpription = "Classic handgun."
+icon = ExtResource("1_oj6s6")
+power = 0.0
+is_stackable = false
+stack_size = 0
+drop_scene = "res://SynthOps/PrefabScenes/pickup_pistol.tscn"
+hint_text_on_use = ""
+sound_pickup = ExtResource("4_7vvnl")
+sound_drop = ExtResource("3_4kqhn")
+attribute_name = ""
+attribute_change_amount = 0.0
+primary_use_prompt = "Shoot"
+secondary_use_prompt = "Aim"
+charge_max = 10.0
+ammo_item_name = "Pistol Bullets"
+charge_current = 10.0
+wieldable_range = 10.0
+wieldable_damage = 1.0
+equip_anim = "Pistol_equip"
+unequip_anim = "Pistol_unequip"
+reload_anim = "Pistol_reload"
+use_anim = "Pistol_shoot"
+target_item_combine = ""
+discard_after_use = false
+reload_amount = 1

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="InventoryItemPD" load_steps=3 format=3 uid="uid://0fhud6y5dfhj"]
+
+[ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventoryItemPD.gd" id="1_tnf54"]
+[ext_resource type="Texture2D" uid="uid://4r37pjj3vjgf" path="res://COGITO/Assets/Graphics/HintIcons/Hint_Dialogue.png" id="1_xiuph"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_tnf54")
+item_type = 2
+name = "Note"
+descpription = "The code to the control center is 9523"
+icon = ExtResource("1_xiuph")
+power = 0.0
+is_stackable = false
+stack_size = 0
+drop_scene = "res://SynthOps/PrefabScenes/pickup_note.tscn"
+hint_text_on_use = ""
+attribute_name = ""
+attribute_change_amount = 0.0
+primary_use_prompt = ""
+secondary_use_prompt = ""
+charge_max = 0.0
+ammo_item_name = ""
+charge_current = 0.0
+wieldable_range = 0.0
+wieldable_damage = 0.0
+equip_anim = ""
+unequip_anim = ""
+reload_anim = ""
+use_anim = ""
+target_item_combine = ""
+discard_after_use = false
+reload_amount = 1
