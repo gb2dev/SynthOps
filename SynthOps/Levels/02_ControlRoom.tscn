@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bo3he1oftoayf"]
+[gd_scene load_steps=37 format=3 uid="uid://bo3he1oftoayf"]
 
 [ext_resource type="Script" path="res://COGITO/SceneManagement/cogito_scene.gd" id="1_qqu7t"]
 [ext_resource type="Script" path="res://COGITO/Scripts/hazard_zone.gd" id="2_eqlvo"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://lsun1f1wjfxl" path="res://COGITO/PrefabScenes/ceiling_lamp.tscn" id="14_jdbtv"]
 [ext_resource type="PackedScene" uid="uid://crlrjhai45gqh" path="res://SynthOps/PrefabScenes/caption_ui.tscn" id="15_cen6f"]
 [ext_resource type="AudioStream" uid="uid://cn3yrske0mwlf" path="res://COGITO/Assets/Audio/Kenney/jingles-pizzicato_14.ogg" id="15_ihng2"]
+[ext_resource type="Script" path="res://addons/godot-console/scripts/console_container.gd" id="17_h2b24"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lntrk"]
 sky_top_color = Color(0.576471, 0.960784, 1, 1)
@@ -137,7 +138,7 @@ size = Vector3(5, 1, 1.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pamb8"]
 size = Vector3(5, 1, 1.5)
 
-[sub_resource type="Resource" id="Resource_adjp1"]
+[sub_resource type="Resource" id="Resource_udyli"]
 resource_local_to_scene = true
 script = ExtResource("6_m234f")
 inventory_slots = Array[Resource("res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd")]([null, null, null, null, null, null, null, null])
@@ -894,7 +895,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.8
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 fall_damage = 20
-inventory_data = SubResource("Resource_adjp1")
+inventory_data = SubResource("Resource_udyli")
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0
@@ -909,6 +910,13 @@ use_stamina_component = true
 visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_p1p6r")]
+
+[node name="ConsoleContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("player")]
+visible = false
+offset_right = 854.0
+offset_bottom = 480.0
+script = ExtResource("17_h2b24")
+player = NodePath("../Player")
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="body_exited" from="KillZone" to="KillZone" method="_on_body_exited"]

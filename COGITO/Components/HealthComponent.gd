@@ -21,31 +21,38 @@ func _ready():
 	current_health = start_health
 	global_position = get_parent().global_position
 
-func add(amount):
-	current_health += amount
-	
+
+func set_to(amount):
+	if amount < current_health:
+		emit_signal("damage_taken")
+
+	current_health = amount
+
 	if current_health > max_health:
 		current_health = max_health
-	emit_signal("health_changed", current_health, max_health)
-		
-func subtract(amount):
-	current_health -= amount
-	
 	if current_health <= 0:
 		current_health = 0
 		emit_signal("death")
 		on_death()
-	emit_signal("damage_taken")
 	emit_signal("health_changed", current_health, max_health)
+
+
+func add(amount):
+	set_to(current_health + amount)
+
+
+func subtract(amount):
+	set_to(current_health - amount)
+
 
 func on_death():
 	if sound_on_death:
 		Audio.play_sound_3d(sound_on_death).global_position = self.global_position
-	
+
 	if spawn_on_death:
 		var spawned_object = spawn_on_death.instantiate()
 		spawned_object.global_position = global_position
 		get_tree().current_scene.add_child(spawned_object)
-	
+
 	for nodepath in destroy_on_death:
 		get_node(nodepath).queue_free()

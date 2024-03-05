@@ -19,7 +19,10 @@ var _tooltip_label : Label
 
 
 func _process(delta: float) -> void:
-	if not Engine.is_editor_hint() and Input.is_action_just_pressed("toggle_console"):
+	if Engine.is_editor_hint():
+		return
+
+	if Input.is_action_just_pressed("toggle_console") or visible and Input.is_action_just_pressed("ui_cancel"):
 		visible = !visible
 		if visible:
 			player._on_pause_movement()

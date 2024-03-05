@@ -95,7 +95,7 @@ var on_ladder : bool = false
 
 var joystick_h_event
 var joystick_v_event
- 
+
 var initial_carryable_height #DEPRECATED Used to change carryable position based if player is standing or crouching
 
 var config = ConfigFile.new()
@@ -126,12 +126,12 @@ func _on_player_state_loaded():
 
 
 func _ready():
-	#Some Setup steps
+	# Some Setup steps
 	CogitoSceneManager._current_player_node = self
 	player_interaction_component.interaction_raycast = $Neck/Head/Eyes/Camera/InteractionRaycast
-	
+
 	randomize()
-	
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	# Pause Menu setup
@@ -141,11 +141,15 @@ func _ready():
 		pause_menu_node.close_pause_menu() # Making sure pause menu is closed on player scene load
 	else:
 		print("Player has no reference to pause menu.")
-		
+
 	initial_carryable_height = carryable_position.position.y #DEPRECATED
-	
+
 	health_component.death.connect(_on_death) # Hookup HealthComponent signal to detect player death
 	brightness_component.brightness_changed.connect(_on_brightness_changed) # Hookup brightness component signal
+
+	# Console commands
+	if not Console.has_command("set_health"):
+		Console.create_command("set_health", self.set_health, "Set player health.")
 
 # Use this function to manipulate player attributes.
 func increase_attribute(attribute_name: String, value: float) -> bool:
@@ -198,6 +202,10 @@ func decrease_attribute(attribute_name: String, value: float):
 			print("Decrease attribute failed: no match.")
 
 
+func set_health(value):
+	health_component.set_to(int(value))
+
+
 func take_damage(value):
 	health_component.subtract(value)
 
@@ -222,7 +230,7 @@ func _on_brightness_changed(current_brightness,max_brightness):
 		print("Checking if ", (sanity_component.current_sanity/sanity_component.max_sanity), " < ", (current_brightness/max_brightness))
 		if (sanity_component.current_sanity/sanity_component.max_sanity) < (current_brightness/max_brightness):
 			sanity_component.start_recovery(2.0, (sanity_component.max_sanity/max_brightness) * current_brightness)
-			
+
 
 # Methods to pause input (for Menu or Dialogues etc)
 func _on_pause_movement():
@@ -258,32 +266,32 @@ func _input(event):
 			neck.rotation.y = clamp(neck.rotation.y, deg_to_rad(-120), deg_to_rad(120))
 		else:
 			rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENS))
-		
+
 		if INVERT_Y_AXIS:
 			head.rotate_x(-deg_to_rad(-event.relative.y * MOUSE_SENS))
 		else:
 			head.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENS))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-		
+
 	# Checking Analog stick input for mouse look
 	if event is InputEventJoypadMotion and !is_movement_paused:
 		if event.get_axis() == 2:
 			joystick_v_event = event
 		if event.get_axis() == 3:
 			joystick_h_event = event
-	
+
 	# Opens Pause Menu if Menu button is proessed.
 	if event.is_action_pressed("menu"):
 		if !is_movement_paused and !is_dead:
 			_on_pause_movement()
 			get_node(pause_menu).open_pause_menu()
-	
+
 	# Open/closes Inventory if Inventory button is pressed
 	if event.is_action_pressed("inventory") and !is_dead:
 		toggle_inventory_interface.emit()
 
 
-func _process(delta): 
+func _process(delta):
 	# If SanityComponent is used, this decreases health when sanity is 0.
 	if sanity_component.current_sanity <= 0:
 		take_damage(health_component.no_sanity_damage * delta)
@@ -302,7 +310,7 @@ func params(transform3d, motion):
 @onready var test_motion_result: PhysicsTestMotionResult3D = PhysicsTestMotionResult3D.new()
 
 func test_motion(transform3d: Transform3D, motion: Vector3) -> bool:
-	return PhysicsServer3D.body_test_motion(self_rid, params(transform3d, motion), test_motion_result)	
+	return PhysicsServer3D.body_test_motion(self_rid, params(transform3d, motion), test_motion_result)
 
 ### LADDER MOVEMENT
 func _process_on_ladder(_delta):
@@ -318,7 +326,7 @@ func _process_on_ladder(_delta):
 				else:
 					head.rotate_x(-deg_to_rad(joystick_h_event.get_axis_value() * JOY_H_SENS))
 				head.rotation.x = clamp(head.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-				
+
 	if joystick_v_event:
 		if abs(joystick_v_event.get_axis_value()) > JOY_DEADZONE:
 			neck.rotate_y(deg_to_rad(-joystick_v_event.get_axis_value() * JOY_V_SENS))
@@ -331,10 +339,10 @@ func _process_on_ladder(_delta):
 	var look_vector = camera.get_camera_transform().basis
 	if jump:
 		velocity += look_vector * Vector3(JUMP_VELOCITY, JUMP_VELOCITY, JUMP_VELOCITY)
-	
+
 	# print("Input_dir:", input_dir, ". direction:", direction)
 	move_and_slide()
-	
+
 	#Step off ladder when on ground
 	if is_on_floor():
 		on_ladder = false
@@ -343,19 +351,19 @@ func _process_on_ladder(_delta):
 func _physics_process(delta):
 	if is_movement_paused:
 		return
-		
+
 	if on_ladder:
 		_process_on_ladder(delta)
 		return
-		
-	var is_falling: bool = false	
-	
+
+	var is_falling: bool = false
+
 	# Getting input direction
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
-	
+
 	# LERP the up/down rotation of whatever you're carrying.
 	carryable_position.rotation.z = lerp_angle(carryable_position.rotation.z, head.rotation.x, 5 * delta)
-	
+
 	# Processing analog stick mouselook
 	if joystick_h_event and !is_movement_paused:
 			if abs(joystick_h_event.get_axis_value()) > JOY_DEADZONE:
@@ -364,18 +372,18 @@ func _physics_process(delta):
 				else:
 					head.rotate_x(-deg_to_rad(joystick_h_event.get_axis_value() * JOY_H_SENS))
 				head.rotation.x = clamp(head.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-				
+
 	if joystick_v_event and !is_movement_paused:
 		if abs(joystick_v_event.get_axis_value()) > JOY_DEADZONE:
 			neck.rotate_y(deg_to_rad(-joystick_v_event.get_axis_value() * JOY_V_SENS))
 			neck.rotation.y = clamp(neck.rotation.y, deg_to_rad(-120), deg_to_rad(120))
-	
+
 	if stand_after_roll:
 		head.position.y = lerp(head.position.y, 0.0, delta * LERP_SPEED)
 		standing_collision_shape.disabled = true
 		crouching_collision_shape.disabled = false
 		stand_after_roll = false
-	
+
 	if Input.is_action_pressed("crouch") and !is_movement_paused or crouch_raycast.is_colliding():
 		if is_on_floor():
 			current_speed = lerp(current_speed, CROUCHING_SPEED, delta * LERP_SPEED)
@@ -409,7 +417,7 @@ func _physics_process(delta):
 			is_walking = false
 			is_sprinting = true
 			is_crouching = false
-		elif Input.is_action_pressed("sprint") and !is_using_stamina:	
+		elif Input.is_action_pressed("sprint") and !is_using_stamina:
 			if !Input.is_action_pressed("jump"):
 				bunny_hop_speed = SPRINTING_SPEED
 			current_speed = lerp(current_speed, bunny_hop_speed, delta * LERP_SPEED)
@@ -425,7 +433,7 @@ func _physics_process(delta):
 			is_walking = true
 			is_sprinting = false
 			is_crouching = false
-	
+
 	if Input.is_action_pressed("free_look") or !sliding_timer.is_stopped():
 		is_free_looking = true
 		if sliding_timer.is_stopped():
@@ -435,7 +443,7 @@ func _physics_process(delta):
 		else:
 			eyes.rotation.z = lerp(
 				eyes.rotation.z,
-				deg_to_rad(4.0), 
+				deg_to_rad(4.0),
 				delta * LERP_SPEED
 			)
 	else:
@@ -447,8 +455,8 @@ func _physics_process(delta):
 			0.0,
 			delta*LERP_SPEED
 		)
-	
-	
+
+
 	### STAIR FLOOR SNAP
 		#jumping and gravity
 	if is_on_floor():
@@ -458,8 +466,8 @@ func _physics_process(delta):
 		snap = Vector3.DOWN
 		gravity_vec = Vector3.DOWN * gravity * delta
 	###
-	
-	
+
+
 	if not is_on_floor():
 		#snap = Vector3.DOWN
 		#velocity.y -= gravity * delta
@@ -469,12 +477,12 @@ func _physics_process(delta):
 		wiggle_vector.x = sin(wiggle_index / 2) + 0.5
 		eyes.position.y = lerp(
 			eyes.position.y,
-			wiggle_vector.y * (wiggle_current_intensity / 2.0), 
+			wiggle_vector.y * (wiggle_current_intensity / 2.0),
 			delta * LERP_SPEED
 		)
 		eyes.position.x = lerp(
 			eyes.position.x,
-			wiggle_vector.x * wiggle_current_intensity, 
+			wiggle_vector.x * wiggle_current_intensity,
 			delta * LERP_SPEED
 		)
 	else:
@@ -488,11 +496,11 @@ func _physics_process(delta):
 			animationPlayer.play("roll")
 		elif last_velocity.y <= -5.0:
 			animationPlayer.play("landing")
-		
+
 		# Taking fall damage
 		if fall_damage > 0 and last_velocity.y <= fall_damage_threshold:
 			health_component.subtract(fall_damage)
-	
+
 	if Input.is_action_just_pressed("jump") and !is_movement_paused and is_on_floor():
 		snap = Vector3.ZERO
 		is_falling = true
@@ -503,7 +511,7 @@ func _physics_process(delta):
 			pass
 			#print("Not enough stamina to jump.")
 			#return
-			
+
 		animationPlayer.play("jump")
 		Audio.play_sound(jump_sound)
 		if !sliding_timer.is_stopped():
@@ -515,7 +523,7 @@ func _physics_process(delta):
 			bunny_hop_speed += BUNNY_HOP_ACCELERATION
 		else:
 			bunny_hop_speed = SPRINTING_SPEED
-	
+
 	if sliding_timer.is_stopped():
 		if is_on_floor():
 			direction = lerp(
@@ -532,33 +540,33 @@ func _physics_process(delta):
 	else:
 		direction = (transform.basis * Vector3(slide_vector.x, 0.0, slide_vector.y)).normalized()
 		current_speed = (sliding_timer.time_left / sliding_timer.wait_time + 0.5) * SLIDING_SPEED
-	
+
 	current_speed = clamp(current_speed, 3.0, 12.0)
-	
+
 	if direction:
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
-	
+
 	last_velocity = velocity
 
 
 	# STAIR HANDLING
 	is_step = false
-	
+
 	if gravity_vec.y >= 0:
-		for i in range(STEP_CHECK_COUNT):			
+		for i in range(STEP_CHECK_COUNT):
 			var step_height: Vector3 = STEP_HEIGHT_DEFAULT - i * step_check_height
 			var transform3d: Transform3D = global_transform
 			var motion: Vector3 = step_height
-			
+
 			var is_player_collided: bool = test_motion(transform3d, motion)
-			
+
 			if test_motion_result.get_collision_count() > 0 and test_motion_result.get_collision_normal(0).y < 0:
 				continue
-			
+
 			if not is_player_collided:
 				transform3d.origin += step_height
 				motion = velocity * delta
@@ -609,14 +617,14 @@ func _physics_process(delta):
 								global_transform.origin += -test_motion_result.get_remainder()
 								break
 
-	
-	
+
+
 	if not is_step and is_on_floor():
 		var step_height: Vector3 = STEP_HEIGHT_DEFAULT
 		var transform3d: Transform3D = global_transform
 		var motion: Vector3 = velocity * delta
 		var is_player_collided: bool = test_motion(transform3d, motion)
-		
+
 		if not is_player_collided:
 			transform3d.origin += motion
 			motion = -step_height
@@ -645,15 +653,15 @@ func _physics_process(delta):
 							global_transform.origin += test_motion_result.get_travel()
 					else:
 						is_falling = true
-	
-	
+
+
 	if is_step and !is_falling:
 		head.position -= head_offset
 		head.position.y = lerp(head.position.y, 0.0, delta * step_height_camera_lerp)
 	else:
 		head_offset = head_offset.lerp(Vector3.ZERO, delta * LERP_SPEED)
 		head.position.y = lerp(head.position.y, 0.0, delta * step_height_camera_lerp)
-	
+
 	velocity += gravity_vec
 
 	if is_falling:
@@ -662,7 +670,7 @@ func _physics_process(delta):
 
 	if !is_movement_paused:
 		move_and_slide()
-	
+
 	# FOOTSTEP SOUNDS SYSTEM = CHECK IF ON GROUND AND MOVING
 	if is_on_floor() and velocity.length() >= 0.2:
 		if footstep_timer.time_left <= 0:
