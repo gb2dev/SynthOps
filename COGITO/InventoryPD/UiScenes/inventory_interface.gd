@@ -55,6 +55,9 @@ func close_inventory():
 
 
 func _on_focus_changed(control: Control):
+	if control is LineEdit:
+		return
+
 	if control != null:
 		control_in_focus = control
 		
