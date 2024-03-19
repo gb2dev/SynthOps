@@ -151,7 +151,7 @@ rim_tint = 0.0
 backlight = Color(0.509804, 0.294118, 0.294118, 1)
 disable_receive_shadows = true
 
-[sub_resource type="Resource" id="Resource_so0wi"]
+[sub_resource type="Resource" id="Resource_pn0md"]
 resource_local_to_scene = true
 script = ExtResource("13_4gj5i")
 inventory_slots = Array[ExtResource("11_634qn")]([null, null, null, null, null, null, null, null])
@@ -841,25 +841,20 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -5.
 stream = ExtResource("22_lx3jm")
 bus = &"SFX"
 
-[node name="Camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_nbkyt")]
+[node name="Camera" parent="." instance=ExtResource("21_nbkyt")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, -3.5, 113)
-player = NodePath("../Player")
 
-[node name="Camera2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_nbkyt")]
+[node name="Camera2" parent="." instance=ExtResource("21_nbkyt")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, -3.5, 119)
-player = NodePath("../Player")
 
-[node name="Camera3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_nbkyt")]
+[node name="Camera3" parent="." instance=ExtResource("21_nbkyt")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, -3.5, 125)
-player = NodePath("../Player")
 
-[node name="Camera4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_nbkyt")]
+[node name="Camera4" parent="." instance=ExtResource("21_nbkyt")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5, -3.5, 116)
-player = NodePath("../Player")
 
-[node name="Camera5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_nbkyt")]
+[node name="Camera5" parent="." instance=ExtResource("21_nbkyt")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5, -3.5, 122)
-player = NodePath("../Player")
 
 [node name="TransitionZone" type="Area3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -5.5, 132)
@@ -2838,11 +2833,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -13
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -16.4, 0)
 
 [node name="Player" parent="." instance=ExtResource("40_3w771")]
-transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, -2, -18.2, 114.1)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.8, 0)
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 fall_damage = 20
-inventory_data = SubResource("Resource_so0wi")
+inventory_data = SubResource("Resource_pn0md")
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0
@@ -2867,6 +2862,9 @@ offset_right = 854.0
 offset_bottom = 480.0
 script = ExtResource("37_h0pyw")
 player = NodePath("../Player")
+
+[node name="CameraTest" parent="." instance=ExtResource("21_nbkyt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 3, 9)
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="body_exited" from="KillZone" to="KillZone" method="_on_body_exited"]

@@ -140,7 +140,7 @@ size = Vector3(5, 1, 1.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pamb8"]
 size = Vector3(5, 1, 1.5)
 
-[sub_resource type="Resource" id="Resource_yf7rt"]
+[sub_resource type="Resource" id="Resource_idlpe"]
 resource_local_to_scene = true
 script = ExtResource("6_m234f")
 inventory_slots = Array[Resource("res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd")]([null, null, null, null, null, null, null, null])
@@ -914,7 +914,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.8
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 fall_damage = 20
-inventory_data = SubResource("Resource_yf7rt")
+inventory_data = SubResource("Resource_idlpe")
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0
@@ -1671,8 +1671,8 @@ size = Vector3(5, 1, 16)
 material = ExtResource("4_8lkwt")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D7"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 53, -16, 202)
-size = Vector3(5, 32, 5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 53, -15.5, 202)
+size = Vector3(5, 33, 5)
 material = ExtResource("4_8lkwt")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D7"]
@@ -1696,7 +1696,81 @@ size = Vector3(5, 1, 10)
 material = ExtResource("4_8lkwt")
 
 [node name="CSGCombiner3D8" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5, 0, 226.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 10, 204.5)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D8"]
+transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, 0, 0, 0)
+radius = 29.77
+height = 20.0
+material = ExtResource("4_8lkwt")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D8"]
+transform = Transform3D(0.923879, 0, -0.382683, 0, 1, 0, 0.382683, 0, 0.923879, 0, 0, 0)
+operation = 2
+radius = 28.77
+height = 18.0
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.04, -5.5, 0)
+operation = 2
+size = Vector3(1, 7, 10)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -5.5, 27.04)
+operation = 2
+size = Vector3(1, 7, 10)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D8"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -19.1, -5.5, 19.14)
+operation = 2
+size = Vector3(1, 7, 10)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.04, -5.5, 0)
+operation = 2
+size = Vector3(1, 7, 10)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D8"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -19.1, -5.5, -19.16)
+operation = 2
+size = Vector3(1, 7, 10)
+material = ExtResource("4_8lkwt")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -5.5, -27.04)
+operation = 2
+size = Vector3(1, 7, 10)
+material = ExtResource("4_8lkwt")
+
+[node name="Txt_Teleportation" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 8.5, 177.96)
+text = "Teleportation"
+font_size = 48
+
+[node name="Txt_Energy" type="Label3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 4, 8.5, 223.06)
+text = "Energy"
+font_size = 48
+
+[node name="Txt_Weapons" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 8.5, 204)
+text = "Weapons"
+font_size = 48
+
+[node name="Txt_BioTech" type="Label3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 3.8, 8.5, 186.2)
+text = "BioTech"
+font_size = 48
+
+[node name="Txt_Gravity" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 23, 8.5, 231.06)
+text = "Gravity"
+font_size = 48
 
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.5, -19.5, 136.5)
