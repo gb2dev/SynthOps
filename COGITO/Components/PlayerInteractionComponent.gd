@@ -39,6 +39,7 @@ func _process(_delta):
 			emit_signal("interaction_prompt", interactable.interaction_text)
 		elif interactable != null and interactable.has_method("carry"):
 			emit_signal("interaction_prompt", interactable.interaction_text)
+		# TODO: make this a separate prompt and raycast
 		elif interactable is HackableComponent:
 			send_hint(null, interactable.hack_text)
 		else:

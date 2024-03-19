@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3m4ni301eso7"]
+[gd_scene load_steps=12 format=3 uid="uid://d3m4ni301eso7"]
 
 [ext_resource type="Script" path="res://COGITO/Scripts/Cogito_Carriable.gd" id="1_ufsmk"]
 [ext_resource type="AudioStream" uid="uid://cqgsihtcw0gl4" path="res://COGITO/Assets/Audio/Kenney/UiAudio/rollover1.ogg" id="2_4d2c8"]
 [ext_resource type="AudioStream" uid="uid://1w0db1u6lv7t" path="res://COGITO/Assets/Audio/Kenney/UiAudio/rollover6.ogg" id="3_p1e4y"]
+[ext_resource type="PackedScene" uid="uid://c4p6cl0xvfdar" path="res://COGITO/Components/HealthComponent.tscn" id="4_8i2pw"]
+[ext_resource type="AudioStream" uid="uid://ba8gpptnnapyh" path="res://COGITO/Assets/Audio/Kenney/cloth2.ogg" id="5_7bgxb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2t7p8"]
 size = Vector3(0.9, 0.9, 0.9)
@@ -22,12 +24,23 @@ size = Vector3(1, 0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mtcvq"]
 
-[node name="CarriableBox" type="RigidBody3D"]
+[node name="CarriableBox" type="RigidBody3D" node_paths=PackedStringArray("health_component")]
 collision_layer = 3
 mass = 4.0
 script = ExtResource("1_ufsmk")
+interaction_text = "Carry Wooden Crate"
 pick_up_sound = ExtResource("2_4d2c8")
 drop_sound = ExtResource("3_p1e4y")
+carry_distance_offset = null
+lock_rotation_when_carried = null
+carrying_velocity_multiplier = null
+health_component = NodePath("HealthComponent")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_8i2pw")]
+max_health = 1.0
+start_health = 1.0
+sound_on_death = ExtResource("5_7bgxb")
+destroy_on_death = Array[NodePath]([NodePath("..")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_2t7p8")

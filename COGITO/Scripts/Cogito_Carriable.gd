@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends HitboxComponent
 
 @export_group("Carriable Settings")
 @export var interaction_text : String = "Carry"
