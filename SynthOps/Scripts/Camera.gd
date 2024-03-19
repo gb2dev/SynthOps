@@ -41,6 +41,11 @@ func _process(delta: float) -> void:
 		is_detecting = false
 
 
+func shutdown():
+	$RotationPoint/CSGCylinder3D.visible = false
+	set_script(null)
+
+
 func _on_area_3d_body_entered(body):
 	var player := body as Player
 	if player:

@@ -162,7 +162,8 @@ func open_door(interactor: Node3D):
 		tween_door.tween_property(self,"position", open_position, door_speed)
 	
 	is_open = true
-	interaction_text = interaction_text_when_open
+	interaction_text = interaction_text_prefix
+	interaction_text += interaction_text_when_open
 	
 func close_door(_interactor: Node3D):
 	audio_stream_player_3d.stream = close_sound
@@ -181,7 +182,8 @@ func close_door(_interactor: Node3D):
 		var tween_door = get_tree().create_tween()
 		tween_door.tween_property(self,"position", closed_position, door_speed)
 	is_open = false
-	interaction_text = interaction_text_when_closed
+	interaction_text = interaction_text_prefix
+	interaction_text += interaction_text_when_closed
 	
 	
 func set_state():

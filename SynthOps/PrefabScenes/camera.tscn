@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdljqy4aa3hmy"]
+[gd_scene load_steps=9 format=3 uid="uid://bdljqy4aa3hmy"]
 
 [ext_resource type="Script" path="res://SynthOps/Scripts/Camera.gd" id="1_gqpmk"]
 [ext_resource type="Material" uid="uid://cv3uux6tuc411" path="res://SynthOps/Assets/Materials/camera_cone_default.tres" id="2_y1aqn"]
 [ext_resource type="Material" uid="uid://cpq3alvr8uf0t" path="res://SynthOps/Assets/Materials/camera_cone_detected.tres" id="3_oi4g3"]
+[ext_resource type="Script" path="res://SynthOps/Components/HackableComponent.gd" id="4_5tumn"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8jj5y"]
 points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.980814, -0.000195742, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
@@ -56,7 +57,10 @@ transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="RotationPoint"]
 transform = Transform3D(1, 0, 0, 0, -5.96046e-08, 1, 0, -1, -5.96046e-08, 0, 0, -0.2)
+use_collision = true
+collision_layer = 3
 radius = 0.2
+script = ExtResource("4_5tumn")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="RotationPoint"]
 transform = Transform3D(1, 0, 0, 0, -5.96046e-08, -1, 0, 1, -5.96046e-08, 0, 0, -5.4)
@@ -84,5 +88,6 @@ libraries = {
 }
 autoplay = "rotate"
 
+[connection signal="hacked" from="RotationPoint/CSGSphere3D" to="." method="shutdown"]
 [connection signal="body_entered" from="RotationPoint/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="RotationPoint/Area3D" to="." method="_on_area_3d_body_exited"]

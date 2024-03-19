@@ -151,7 +151,7 @@ rim_tint = 0.0
 backlight = Color(0.509804, 0.294118, 0.294118, 1)
 disable_receive_shadows = true
 
-[sub_resource type="Resource" id="Resource_pn0md"]
+[sub_resource type="Resource" id="Resource_d210d"]
 resource_local_to_scene = true
 script = ExtResource("13_4gj5i")
 inventory_slots = Array[ExtResource("11_634qn")]([null, null, null, null, null, null, null, null])
@@ -711,6 +711,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.6, 
 
 [node name="MaintenanceDoor" parent="." instance=ExtResource("4_eqk81")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.499997, 0, 109.85)
+closed_rotation_deg = 90.0
 
 [node name="MeshInstance3D" parent="MaintenanceDoor" index="0"]
 skeleton = NodePath("")
@@ -2832,12 +2833,13 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -13
 [node name="ladder7" parent="Ladder5" instance=ExtResource("44_meovh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -16.4, 0)
 
-[node name="Player" parent="." instance=ExtResource("40_3w771")]
+[node name="Player" parent="." node_paths=PackedStringArray("console_container") instance=ExtResource("40_3w771")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.8, 0)
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
+console_container = NodePath("../ConsoleContainer")
 fall_damage = 20
-inventory_data = SubResource("Resource_pn0md")
+inventory_data = SubResource("Resource_d210d")
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0
@@ -2865,6 +2867,9 @@ player = NodePath("../Player")
 
 [node name="CameraTest" parent="." instance=ExtResource("21_nbkyt")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 3, 9)
+
+[node name="pickup_omnitool2" parent="." instance=ExtResource("13_2ueke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="body_exited" from="KillZone" to="KillZone" method="_on_body_exited"]

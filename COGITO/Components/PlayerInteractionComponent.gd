@@ -39,6 +39,8 @@ func _process(_delta):
 			emit_signal("interaction_prompt", interactable.interaction_text)
 		elif interactable != null and interactable.has_method("carry"):
 			emit_signal("interaction_prompt", interactable.interaction_text)
+		elif interactable is HackableComponent:
+			send_hint(null, interactable.hack_text)
 		else:
 			emit_signal("interaction_prompt", "")
 
@@ -130,7 +132,7 @@ func attempt_action_primary():
 		print("Nothing equipped, but is_wielding was true. This shouldn't happen!")
 		return
 	if equipped_wieldable_item.charge_current == 0 and equipped_wieldable_item.charge_max > 0:
-		send_hint(null, equipped_wieldable_item.name + " is out of ammo.")
+		send_hint(null, equipped_wieldable_item.name + " is out of " + equipped_wieldable_item.ammo_item_name + ".")
 	else:
 		if !wieldable_animation_player.is_playing(): # Enforces fire rate.
 			wieldable_animation_player.play(equipped_wieldable_item.use_anim)

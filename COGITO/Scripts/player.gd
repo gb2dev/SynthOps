@@ -6,8 +6,10 @@ signal player_state_loaded()
 
 ## Reference to Pause menu node
 @export var pause_menu : NodePath
-## Refereence to Player HUD node
+## Reference to Player HUD node
 @export var player_hud : NodePath
+## Reference to Console Container node
+@export var console_container : ConsoleContainer
 
 ## Damage the player takes if falling from great height. Leave at 0 if you don't want to use this.
 @export var fall_damage : int
@@ -287,7 +289,7 @@ func _input(event):
 			get_node(pause_menu).open_pause_menu()
 
 	# Open/closes Inventory if Inventory button is pressed
-	if event.is_action_pressed("inventory") and !is_dead:
+	if not console_container.visible and event.is_action_pressed("inventory") and !is_dead:
 		toggle_inventory_interface.emit()
 
 

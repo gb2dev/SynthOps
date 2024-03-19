@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://cn3yrske0mwlf" path="res://COGITO/Assets/Audio/Kenney/jingles-pizzicato_14.ogg" id="13_gbbww"]
 [ext_resource type="PackedScene" uid="uid://dy3tudla5p2nc" path="res://COGITO/Components/PlayerInteractionComponent.tscn" id="13_rawn6"]
 [ext_resource type="AudioStream" uid="uid://bnqnuewmntcyp" path="res://COGITO/Assets/Audio/Kenney/UiAudio/error_008.ogg" id="14_clfp3"]
+[ext_resource type="Shader" path="res://SynthOps/Assets/Materials/Shaders/Viewmodel.gdshader" id="17_2aluk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bvi11"]
 size = Vector3(0.6, 1.6, 0.6)
@@ -84,12 +85,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1qed2")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ty7id"]
-albedo_color = Color(0.462745, 0.462745, 0.462745, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dngoj"]
-albedo_color = Color(0.380392, 0.380392, 0.380392, 1)
-metallic = 1.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnhcv"]
+render_priority = 0
+shader = ExtResource("17_2aluk")
+shader_parameter/fov = 77.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_af0lu"]
 streams_count = 5
@@ -234,12 +233,12 @@ skeleton = NodePath("")
 [node name="CSGBox3D" type="CSGBox3D" parent="Neck/Head/Wieldables/Hammer"]
 transform = Transform3D(1, 0, -2.27374e-13, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 size = Vector3(0.1, 0.5, 0.1)
-material = SubResource("StandardMaterial3D_ty7id")
+material = SubResource("ShaderMaterial_jnhcv")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Neck/Head/Wieldables/Hammer"]
 transform = Transform3D(1, 0, -2.27374e-13, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 size = Vector3(0.3, 0.1, 0.1)
-material = SubResource("StandardMaterial3D_dngoj")
+material = SubResource("ShaderMaterial_jnhcv")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Neck/Head/Wieldables/Hammer"]
 bus = &"SFX"
@@ -262,10 +261,12 @@ skeleton = NodePath("")
 [node name="CSGBox3D" type="CSGBox3D" parent="Neck/Head/Wieldables/Omni Tool"]
 transform = Transform3D(1, 0, -2.27374e-13, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 size = Vector3(0.1, 0.15, 0.02)
+material = SubResource("ShaderMaterial_jnhcv")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Neck/Head/Wieldables/Omni Tool"]
 transform = Transform3D(1, 0, -2.27374e-13, 0, 1, 0, 0, 0, 1, 0.03, 0.1, 0)
 size = Vector3(0.01, 0.05, 0.02)
+material = SubResource("ShaderMaterial_jnhcv")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Neck/Head/Wieldables/Omni Tool"]
 bus = &"SFX"

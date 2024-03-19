@@ -137,7 +137,7 @@ func _on_input_gui_event(event: InputEvent) -> void:
 	if event.is_action_pressed(&"ui_text_completion_accept"):
 		_console.execute(_console_input.text)
 		_console_input.clear()
-	elif event.is_action_pressed(&"ui_text_completion_query"):
+	elif event.is_action_pressed(&"ui_text_indent"):
 		set_input_text(_console.autocomplete_command(_console_input.text))
 	elif event.is_action_pressed(&"ui_text_caret_up"):
 		set_input_text(_console.get_prev_command())

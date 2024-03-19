@@ -30,9 +30,10 @@ func hack(_passed_item_reference : InventoryItemPD):
 	if result:
 		var body = result.collider
 		if body is HackableComponent:
-			body.hack()
-			Audio.play_sound(sound_hack)
-			return
+			if not body.is_hacked:
+				body.hack()
+				Audio.play_sound(sound_hack)
+				return
 	Audio.play_sound(sound_no_hack)
 	_passed_item_reference.subtract(-1)
 
