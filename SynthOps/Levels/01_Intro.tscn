@@ -151,7 +151,7 @@ rim_tint = 0.0
 backlight = Color(0.509804, 0.294118, 0.294118, 1)
 disable_receive_shadows = true
 
-[sub_resource type="Resource" id="Resource_w4n55"]
+[sub_resource type="Resource" id="Resource_t8um2"]
 resource_local_to_scene = true
 script = ExtResource("13_4gj5i")
 inventory_slots = Array[ExtResource("11_634qn")]([null, null, null, null, null, null, null, null])
@@ -2860,7 +2860,7 @@ pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 console_container = NodePath("../ConsoleContainer")
 fall_damage = 20
-inventory_data = SubResource("Resource_w4n55")
+inventory_data = SubResource("Resource_t8um2")
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0
@@ -2894,7 +2894,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 3
 [connection signal="correct_code_entered" from="Keypad" to="ElevatorDoor" method="queue_free"]
 [connection signal="correct_code_entered" from="Keypad2" to="ElevatorDoor2" method="queue_free"]
 [connection signal="correct_code_entered" from="Keypad3" to="ElevatorDoor3" method="queue_free"]
-[connection signal="finished" from="AudioStreamPlayer" to="Player" method="take_damage" binds= [100]]
 [connection signal="threat_detected" from="Camera" to="AudioStreamPlayer" method="play"]
 [connection signal="threat_detected" from="Camera2" to="AudioStreamPlayer" method="play"]
 [connection signal="threat_detected" from="Camera3" to="AudioStreamPlayer" method="play"]

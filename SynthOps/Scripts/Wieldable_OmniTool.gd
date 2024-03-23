@@ -10,6 +10,7 @@ extends Node3D
 @export_group("Audio")
 @export var sound_hack : AudioStream
 @export var sound_no_hack : AudioStream
+@export var sound_reload: AudioStream
 
 # Stores the player interaction component
 var player_interaction_component

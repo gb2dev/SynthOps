@@ -152,6 +152,8 @@ func _ready():
 	# Console commands
 	if not Console.has_command("set_health"):
 		Console.create_command("set_health", self.set_health, "Set player health.")
+	if not Console.has_command("give"):
+		Console.create_command("give", self.give, "Give an item to your inventory.")
 
 # Use this function to manipulate player attributes.
 func increase_attribute(attribute_name: String, value: float) -> bool:
@@ -202,6 +204,31 @@ func decrease_attribute(attribute_name: String, value: float):
 			stamina_component.subtract(value)
 		_:
 			print("Decrease attribute failed: no match.")
+
+
+func throw_grenade() -> void:
+	for slot_data in inventory_data.inventory_slots:
+		if slot_data != null and slot_data.inventory_item.name == "Grenade":
+			inventory_data.remove_slot_data(slot_data)
+			var grenade := load("res://SynthOps/PrefabScenes/grenade.tscn") as PackedScene
+			var grenade_instance := grenade.instantiate() as RigidBody3D
+			get_tree().current_scene.add_child(grenade_instance)
+			grenade_instance.global_position = global_position - transform.basis.z * 1 + Vector3.UP * 0.5
+			grenade_instance.apply_force(-transform.basis.z * 500)
+			return
+
+	print("NO GRENADE")
+
+
+func give(value):
+	var slot := InventorySlotPD.new()
+	var prefix: String
+	if value.begins_with("Cogito_"):
+		prefix = "res://COGITO/InventoryPD/Items/"
+	else:
+		prefix = "res://SynthOps/InventoryPD/Items/"
+	slot.inventory_item = load(prefix + value + ".tres")
+	inventory_data.pick_up_slot_data(slot)
 
 
 func set_health(value):
@@ -298,13 +325,8 @@ func _process(delta):
 	if sanity_component.current_sanity <= 0:
 		take_damage(health_component.no_sanity_damage * delta)
 
-	# TODO: remoe grenade test
 	if Input.is_action_just_pressed("grenade"):
-		var grenade := load("res://SynthOps/PrefabScenes/grenade.tscn") as PackedScene
-		var grenade_instance := grenade.instantiate() as RigidBody3D
-		get_tree().current_scene.add_child(grenade_instance)
-		grenade_instance.global_position = global_position - transform.basis.z * 1 + Vector3.UP * 0.5
-		grenade_instance.apply_force(-transform.basis.z * 500)
+		throw_grenade()
 
 # Cache allocation of test motion parameters.
 @onready var _params: PhysicsTestMotionParameters3D = PhysicsTestMotionParameters3D.new()
