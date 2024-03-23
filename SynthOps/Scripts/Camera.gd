@@ -1,4 +1,4 @@
-extends Node3D
+extends HitboxComponent
 
 
 @export var cone_material_default: StandardMaterial3D

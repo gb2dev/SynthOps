@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgm6e6w8f4onb"]
+
+[ext_resource type="Script" path="res://SynthOps/Scripts/grenade.gd" id="1_1i1r1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m3lyi"]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_l1vkg"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dhbol"]
+radius = 5.0
+
+[node name="Grenade" type="RigidBody3D"]
+collision_layer = 0
+script = ExtResource("1_1i1r1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_m3lyi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_l1vkg")
+
+[node name="BlastRadius" type="Area3D" parent="."]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlastRadius"]
+shape = SubResource("SphereShape3D_dhbol")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -298,6 +298,14 @@ func _process(delta):
 	if sanity_component.current_sanity <= 0:
 		take_damage(health_component.no_sanity_damage * delta)
 
+	# TODO: remoe grenade test
+	if Input.is_action_just_pressed("grenade"):
+		var grenade := load("res://SynthOps/PrefabScenes/grenade.tscn") as PackedScene
+		var grenade_instance := grenade.instantiate() as RigidBody3D
+		get_tree().current_scene.add_child(grenade_instance)
+		grenade_instance.global_position = global_position - transform.basis.z * 1 + Vector3.UP * 0.5
+		grenade_instance.apply_force(-transform.basis.z * 500)
+
 # Cache allocation of test motion parameters.
 @onready var _params: PhysicsTestMotionParameters3D = PhysicsTestMotionParameters3D.new()
 
