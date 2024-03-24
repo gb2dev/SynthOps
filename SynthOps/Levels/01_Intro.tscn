@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://6g5bnwo06rup"]
+[gd_scene load_steps=63 format=3 uid="uid://6g5bnwo06rup"]
 
 [ext_resource type="Material" uid="uid://dkbgl3p3ffd1" path="res://COGITO/Assets/Materials/Prototype_DarkGrey.tres" id="2_7i5xn"]
 [ext_resource type="Material" uid="uid://hhhudvarh7gk" path="res://COGITO/Assets/Materials/Prototype_Orange.tres" id="3_ps38b"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cgcrwmu2bs4se" path="res://COGITO/Assets/Textures/Prototype Textures/PNG/Green/texture_01.png" id="36_0d1uh"]
 [ext_resource type="Texture2D" uid="uid://cg5knuav7df4o" path="res://COGITO/Assets/Graphics/HintIcons/Hint_X.png" id="36_scjbx"]
 [ext_resource type="Script" path="res://addons/godot-console/scripts/console_container.gd" id="37_h0pyw"]
+[ext_resource type="PackedScene" uid="uid://buaw4lb0hk7q8" path="res://SynthOps/PrefabScenes/security_bot.tscn" id="38_rd7y3"]
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://COGITO/PrefabScenes/player.tscn" id="40_3w771"]
 [ext_resource type="PackedScene" uid="uid://0c32kepv0ahx" path="res://COGITO/PrefabScenes/Player_HUD.tscn" id="41_taj6d"]
 [ext_resource type="PackedScene" uid="uid://rw7gdui8lu3n" path="res://COGITO/EasyMenus/Scenes/pause_menu.tscn" id="42_c7t48"]
@@ -151,10 +152,17 @@ rim_tint = 0.0
 backlight = Color(0.509804, 0.294118, 0.294118, 1)
 disable_receive_shadows = true
 
-[sub_resource type="Resource" id="Resource_t8um2"]
+[sub_resource type="Resource" id="Resource_sn0mb"]
 resource_local_to_scene = true
 script = ExtResource("13_4gj5i")
 inventory_slots = Array[ExtResource("11_634qn")]([null, null, null, null, null, null, null, null])
+
+[sub_resource type="Curve3D" id="Curve3D_ml0tt"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, -10, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="01_Intro" type="Node3D" node_paths=PackedStringArray("connectors")]
 script = SubResource("GDScript_psi74")
@@ -2860,7 +2868,7 @@ pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 console_container = NodePath("../ConsoleContainer")
 fall_damage = 20
-inventory_data = SubResource("Resource_t8um2")
+inventory_data = SubResource("Resource_sn0mb")
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0
@@ -2888,6 +2896,18 @@ player = NodePath("../Player")
 
 [node name="Camera6" parent="." instance=ExtResource("21_nbkyt")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 3, 8)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
+curve = SubResource("Curve3D_ml0tt")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+rotation_mode = 0
+loop = false
+
+[node name="SecurityBot" parent="Path3D/PathFollow3D" instance=ExtResource("38_rd7y3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="body_exited" from="KillZone" to="KillZone" method="_on_body_exited"]

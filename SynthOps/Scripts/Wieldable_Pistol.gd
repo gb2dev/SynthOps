@@ -47,9 +47,9 @@ func action_secondary(is_released:bool):
 func hit_scan_collision(collision_point, _passed_item_reference: InventoryItemPD):
 	var bullet_direction = (collision_point - bullet_point.get_global_transform().origin).normalized()
 	var new_intersection = PhysicsRayQueryParameters3D.create(bullet_point.get_global_transform().origin, collision_point + bullet_direction * 2)
-	
+
 	var bullet_collision = get_world_3d().direct_space_state.intersect_ray(new_intersection)
-	
+
 	# Spawning a ray
 	var instantiated_ray = ray_prefab.instantiate()
 	instantiated_ray.draw_ray(bullet_point.get_global_transform().origin, collision_point + bullet_direction)

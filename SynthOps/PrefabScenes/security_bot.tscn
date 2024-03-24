@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://buaw4lb0hk7q8"]
+
+[ext_resource type="Script" path="res://SynthOps/Scripts/SecurityBot.gd" id="1_78o8i"]
+[ext_resource type="PackedScene" uid="uid://yxfuwhq5p2vi" path="res://SynthOps/PrefabScenes/ray.tscn" id="2_dfwdv"]
+[ext_resource type="Script" path="res://COGITO/Components/HealthComponent.gd" id="3_bqai2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vlybh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rqwww"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o8hgg"]
+points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.980814, -0.000195742, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2cg6"]
+size = Vector3(0.25, 0.5, 0.8)
+
+[node name="SecurityBot" type="CharacterBody3D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_78o8i")
+ray_prefab = ExtResource("2_dfwdv")
+health_component = NodePath("HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_vlybh")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_rqwww")
+
+[node name="Eyes" type="Node3D" parent="Body"]
+
+[node name="Area3D" type="Area3D" parent="Body"]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, -5.5)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Area3D"]
+shape = SubResource("ConvexPolygonShape3D_o8hgg")
+
+[node name="RayCast3D" type="RayCast3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+target_position = Vector3(0, 0, -1000)
+
+[node name="HitMarker" type="Marker3D" parent="Body/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1000)
+
+[node name="Wheel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.25, 0)
+mesh = SubResource("BoxMesh_n2cg6")
+
+[node name="Wheel2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.25, 0)
+mesh = SubResource("BoxMesh_n2cg6")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="PauseTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_bqai2")
+max_health = 50.0
+destroy_on_death = Array[NodePath]([NodePath("..")])
+
+[connection signal="body_entered" from="Body/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Body/Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="PauseTimer" to="." method="_on_pause_timer_timeout"]
