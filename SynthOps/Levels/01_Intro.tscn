@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://6g5bnwo06rup"]
+[gd_scene load_steps=65 format=3 uid="uid://6g5bnwo06rup"]
 
 [ext_resource type="Material" uid="uid://dkbgl3p3ffd1" path="res://COGITO/Assets/Materials/Prototype_DarkGrey.tres" id="2_7i5xn"]
 [ext_resource type="Material" uid="uid://hhhudvarh7gk" path="res://COGITO/Assets/Materials/Prototype_Orange.tres" id="3_ps38b"]
@@ -26,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://cg5knuav7df4o" path="res://COGITO/Assets/Graphics/HintIcons/Hint_X.png" id="36_scjbx"]
 [ext_resource type="Script" path="res://addons/godot-console/scripts/console_container.gd" id="37_h0pyw"]
 [ext_resource type="PackedScene" uid="uid://buaw4lb0hk7q8" path="res://SynthOps/PrefabScenes/security_bot.tscn" id="38_rd7y3"]
+[ext_resource type="PackedScene" uid="uid://b1ignug1ti37u" path="res://SynthOps/PrefabScenes/alarm_panel.tscn" id="39_iun6y"]
+[ext_resource type="PackedScene" uid="uid://1wfh6sr1m1x2" path="res://SynthOps/PrefabScenes/laser.tscn" id="40_2cmta"]
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://COGITO/PrefabScenes/player.tscn" id="40_3w771"]
 [ext_resource type="PackedScene" uid="uid://0c32kepv0ahx" path="res://COGITO/PrefabScenes/Player_HUD.tscn" id="41_taj6d"]
 [ext_resource type="PackedScene" uid="uid://rw7gdui8lu3n" path="res://COGITO/EasyMenus/Scenes/pause_menu.tscn" id="42_c7t48"]
@@ -152,17 +154,17 @@ rim_tint = 0.0
 backlight = Color(0.509804, 0.294118, 0.294118, 1)
 disable_receive_shadows = true
 
-[sub_resource type="Resource" id="Resource_sn0mb"]
-resource_local_to_scene = true
-script = ExtResource("13_4gj5i")
-inventory_slots = Array[ExtResource("11_634qn")]([null, null, null, null, null, null, null, null])
-
 [sub_resource type="Curve3D" id="Curve3D_ml0tt"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, -10, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Resource" id="Resource_smnx7"]
+resource_local_to_scene = true
+script = ExtResource("13_4gj5i")
+inventory_slots = Array[ExtResource("11_634qn")]([null, null, null, null, null, null, null, null])
 
 [node name="01_Intro" type="Node3D" node_paths=PackedStringArray("connectors")]
 script = SubResource("GDScript_psi74")
@@ -741,54 +743,63 @@ transform = Transform3D(0.701979, 0, 0.712198, 0, 1, 0, -0.712198, 0, 0.701979, 
 carry_distance_offset = -0.3
 lock_rotation_when_carried = true
 carrying_velocity_multiplier = 10.0
+health_component = null
 
 [node name="CarriableBox2" parent="." instance=ExtResource("20_1wwu6")]
 transform = Transform3D(0.251833, 0, 0.967771, 0, 1, 0, -0.967771, 0, 0.251833, -0.444875, 0.5, 116.85)
 carry_distance_offset = -0.3
 lock_rotation_when_carried = true
 carrying_velocity_multiplier = 10.0
+health_component = null
 
 [node name="CarriableBox5" parent="." instance=ExtResource("20_1wwu6")]
 transform = Transform3D(-0.180759, 0, 0.983527, 0, 1, 0, -0.983527, 0, -0.180759, 0.055125, 0.5, 115.75)
 carry_distance_offset = -0.3
 lock_rotation_when_carried = true
 carrying_velocity_multiplier = 10.0
+health_component = null
 
 [node name="CarriableBox4" parent="." instance=ExtResource("20_1wwu6")]
 transform = Transform3D(-0.265792, 0, 0.964031, 0, 1, 0, -0.964031, 0, -0.265792, -6.74487, 0.5, 76.15)
 carry_distance_offset = -0.3
 lock_rotation_when_carried = true
 carrying_velocity_multiplier = 10.0
+health_component = null
 
 [node name="CarriableBox3" parent="." instance=ExtResource("20_1wwu6")]
 transform = Transform3D(-0.0943521, 0, 0.99554, 0, 1, 0, -0.99554, 0, -0.0943521, 0.255125, 1.6, 116.35)
 carry_distance_offset = -0.3
 lock_rotation_when_carried = true
 carrying_velocity_multiplier = 10.0
+health_component = null
 
 [node name="CarriableBox6" parent="." instance=ExtResource("20_1wwu6")]
 transform = Transform3D(0.701979, 0, 0.712198, 0, 1, 0, -0.712198, 0, 0.701979, -1.2, -6.5, 110.75)
 carry_distance_offset = -0.3
 lock_rotation_when_carried = true
 carrying_velocity_multiplier = 10.0
+health_component = null
 
 [node name="CarriableBox7" parent="." instance=ExtResource("20_1wwu6")]
 transform = Transform3D(0.967771, 0, -0.251833, 0, 1, 0, 0.251833, 0, 0.967771, -2.4, -6.5, 111.25)
 carry_distance_offset = -0.3
 lock_rotation_when_carried = true
 carrying_velocity_multiplier = 10.0
+health_component = null
 
 [node name="CarriableBox8" parent="." instance=ExtResource("20_1wwu6")]
 transform = Transform3D(0.964031, 0, 0.265792, 0, 1, 0, -0.265792, 0, 0.964031, -2.4, -6.5, 110.05)
 carry_distance_offset = -0.3
 lock_rotation_when_carried = true
 carrying_velocity_multiplier = 10.0
+health_component = null
 
 [node name="CarriableBox9" parent="." instance=ExtResource("20_1wwu6")]
 transform = Transform3D(0.964031, 0, 0.265792, 0, 1, 0, -0.265792, 0, 0.964031, -2, -5.5, 110.75)
 carry_distance_offset = -0.3
 lock_rotation_when_carried = true
 carrying_velocity_multiplier = 10.0
+health_component = null
 
 [node name="pickup_omnitool" parent="." instance=ExtResource("13_2ueke")]
 transform = Transform3D(0.996195, 4.63889e-10, 0.0871557, -9.31323e-10, 1, 2.98023e-08, -0.0871557, 1.49012e-08, 0.996195, -2.5, 1.3, 116.9)
@@ -2754,6 +2765,7 @@ transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 
 carry_distance_offset = 0.0
 lock_rotation_when_carried = true
 carrying_velocity_multiplier = 10.0
+health_component = null
 
 [node name="CSGCombiner3D13" type="CSGCombiner3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 118)
@@ -2862,13 +2874,25 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -13
 [node name="ladder7" parent="Ladder5" instance=ExtResource("44_meovh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -16.4, 0)
 
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
+curve = SubResource("Curve3D_ml0tt")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+rotation_mode = 0
+loop = false
+
+[node name="SecurityBot" parent="Path3D/PathFollow3D" instance=ExtResource("38_rd7y3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
 [node name="Player" parent="." node_paths=PackedStringArray("console_container") instance=ExtResource("40_3w771")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.8, 0)
 pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 console_container = NodePath("../ConsoleContainer")
 fall_damage = 20
-inventory_data = SubResource("Resource_sn0mb")
+inventory_data = SubResource("Resource_smnx7")
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0
@@ -2894,20 +2918,11 @@ offset_bottom = 480.0
 script = ExtResource("37_h0pyw")
 player = NodePath("../Player")
 
-[node name="Camera6" parent="." instance=ExtResource("21_nbkyt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 3, 8)
+[node name="AlarmPanel" parent="." instance=ExtResource("39_iun6y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5, 1, 9)
 
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
-curve = SubResource("Curve3D_ml0tt")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
-rotation_mode = 0
-loop = false
-
-[node name="SecurityBot" parent="Path3D/PathFollow3D" instance=ExtResource("38_rd7y3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+[node name="Laser" parent="." instance=ExtResource("40_2cmta")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5, 0.5, 10)
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="body_exited" from="KillZone" to="KillZone" method="_on_body_exited"]
@@ -2921,5 +2936,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 [connection signal="threat_detected" from="Camera5" to="AudioStreamPlayer" method="play"]
 [connection signal="body_entered" from="HazardZone" to="HazardZone" method="_on_body_entered"]
 [connection signal="body_exited" from="HazardZone" to="HazardZone" method="_on_body_exited"]
+[connection signal="triggered" from="Laser" to="AlarmPanel" method="activate"]
 
 [editable path="MaintenanceDoor"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://buaw4lb0hk7q8"]
+[gd_scene load_steps=9 format=3 uid="uid://buaw4lb0hk7q8"]
 
 [ext_resource type="Script" path="res://SynthOps/Scripts/SecurityBot.gd" id="1_78o8i"]
 [ext_resource type="PackedScene" uid="uid://yxfuwhq5p2vi" path="res://SynthOps/PrefabScenes/ray.tscn" id="2_dfwdv"]
+[ext_resource type="AudioStream" uid="uid://dvbd46d7c28ee" path="res://COGITO/Assets/Audio/Kenney/bookPlace1.ogg" id="2_jc3g7"]
 [ext_resource type="Script" path="res://COGITO/Components/HealthComponent.gd" id="3_bqai2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vlybh"]
@@ -16,6 +17,7 @@ size = Vector3(0.25, 0.5, 0.8)
 
 [node name="SecurityBot" type="CharacterBody3D" node_paths=PackedStringArray("health_component")]
 script = ExtResource("1_78o8i")
+shoot_sound = ExtResource("2_jc3g7")
 ray_prefab = ExtResource("2_dfwdv")
 health_component = NodePath("HealthComponent")
 

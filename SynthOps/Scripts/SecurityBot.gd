@@ -21,6 +21,8 @@ var pause := false
 @onready var path_follow: PathFollow3D = get_parent()
 @onready var area := $Body/Area3D
 
+@export var shoot_sound: AudioStream
+
 ## Prefab of ray
 @export var ray_prefab: PackedScene
 
@@ -32,7 +34,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(state)
 	match state:
 		IDLE:
 			area.scale.y = 5
@@ -73,6 +74,8 @@ func _on_area_3d_body_exited(body) -> void:
 
 
 func _on_shoot_timer_timeout() -> void:
+	Audio.play_sound_3d(shoot_sound).global_position = global_position
+
 	var radius := 0.06
 	var r := sqrt(randf_range(0.0, 1.0)) * radius
 	var t := randf_range(0.0, 1.0) * TAU

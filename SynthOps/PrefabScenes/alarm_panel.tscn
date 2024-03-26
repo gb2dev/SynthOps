@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1ignug1ti37u"]
+
+[ext_resource type="Script" path="res://SynthOps/Scripts/AlarmPanel.gd" id="1_lrfpv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ngq1j"]
+size = Vector3(0.5, 0.5, 0.1)
+
+[node name="AlarmPanel" type="Node3D"]
+script = ExtResource("1_lrfpv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+mesh = SubResource("BoxMesh_ngq1j")
