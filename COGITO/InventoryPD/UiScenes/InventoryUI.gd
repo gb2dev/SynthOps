@@ -4,7 +4,7 @@ const Slot = preload("res://COGITO/InventoryPD/UiScenes/Slot.tscn")
 
 @export var inventory_name : String = ""
 @onready var grid_container = $MarginContainer/VBoxContainer/GridContainer
-@onready var label = $MarginContainer/VBoxContainer/Label
+@onready var label = $MarginContainer/VBoxContainer/HBoxContainer/NameLabel
 var slot_array = []
 var first_slot
 
