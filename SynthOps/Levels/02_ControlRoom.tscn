@@ -1,23 +1,24 @@
-[gd_scene load_steps=45 format=3 uid="uid://bo3he1oftoayf"]
+[gd_scene load_steps=46 format=3 uid="uid://bo3he1oftoayf"]
 
-[ext_resource type="Script" path="res://COGITO/SceneManagement/cogito_scene.gd" id="1_qqu7t"]
-[ext_resource type="Script" path="res://COGITO/Scripts/hazard_zone.gd" id="2_eqlvo"]
+[ext_resource type="Script" uid="uid://l07lwp0838vu" path="res://COGITO/SceneManagement/cogito_scene.gd" id="1_qqu7t"]
+[ext_resource type="Script" uid="uid://ij4ypepgnaq4" path="res://COGITO/Scripts/hazard_zone.gd" id="2_eqlvo"]
 [ext_resource type="Texture2D" uid="uid://cg5knuav7df4o" path="res://COGITO/Assets/Graphics/HintIcons/Hint_X.png" id="3_1hq7b"]
 [ext_resource type="Material" uid="uid://dkbgl3p3ffd1" path="res://COGITO/Assets/Materials/Prototype_DarkGrey.tres" id="4_8lkwt"]
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://COGITO/PrefabScenes/player.tscn" id="5_rvg2a"]
-[ext_resource type="Script" path="res://COGITO/InventoryPD/InventoryPD.gd" id="6_m234f"]
+[ext_resource type="Script" uid="uid://bsc6g5b05c2ns" path="res://COGITO/InventoryPD/InventoryPD.gd" id="6_m234f"]
 [ext_resource type="PackedScene" uid="uid://0c32kepv0ahx" path="res://COGITO/PrefabScenes/Player_HUD.tscn" id="7_2268o"]
 [ext_resource type="PackedScene" uid="uid://rw7gdui8lu3n" path="res://COGITO/EasyMenus/Scenes/pause_menu.tscn" id="8_p1p6r"]
-[ext_resource type="Script" path="res://COGITO/Scripts/scene_transition_zone.gd" id="9_gbg0b"]
+[ext_resource type="Script" uid="uid://bdeijy06mknvx" path="res://COGITO/Scripts/scene_transition_zone.gd" id="9_gbg0b"]
 [ext_resource type="Material" uid="uid://hhhudvarh7gk" path="res://COGITO/Assets/Materials/Prototype_Orange.tres" id="10_b31yj"]
 [ext_resource type="Material" uid="uid://dhg1uhiq7ywn2" path="res://COGITO/Assets/Materials/Prototype_Green.tres" id="11_pq1qx"]
-[ext_resource type="Script" path="res://COGITO/Scripts/Cogito_Switch.gd" id="12_bgp66"]
+[ext_resource type="Script" uid="uid://btuw04a515w0i" path="res://COGITO/Scripts/Cogito_Switch.gd" id="12_bgp66"]
 [ext_resource type="AudioStream" uid="uid://b6wdy2102jymr" path="res://COGITO/Assets/Audio/Kenney/UiAudio/switch2.ogg" id="13_etxvt"]
+[ext_resource type="Script" uid="uid://bjaap724y6qt6" path="res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd" id="13_ghwrn"]
 [ext_resource type="PackedScene" uid="uid://lsun1f1wjfxl" path="res://COGITO/PrefabScenes/ceiling_lamp.tscn" id="14_jdbtv"]
 [ext_resource type="PackedScene" uid="uid://crlrjhai45gqh" path="res://SynthOps/PrefabScenes/caption_ui.tscn" id="15_cen6f"]
 [ext_resource type="AudioStream" uid="uid://cn3yrske0mwlf" path="res://COGITO/Assets/Audio/Kenney/jingles-pizzicato_14.ogg" id="15_ihng2"]
-[ext_resource type="Script" path="res://addons/godot-console/scripts/console_container.gd" id="17_h2b24"]
-[ext_resource type="Shader" path="res://SynthOps/Assets/Materials/Shaders/Water.gdshader" id="18_1ec2a"]
+[ext_resource type="Script" uid="uid://ch6mmondoqgxg" path="res://addons/godot-console/scripts/console_container.gd" id="17_h2b24"]
+[ext_resource type="Shader" uid="uid://dip0sajccnv2y" path="res://SynthOps/Assets/Materials/Shaders/Water.gdshader" id="18_1ec2a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lntrk"]
 sky_top_color = Color(0.576471, 0.960784, 1, 1)
@@ -140,10 +141,10 @@ size = Vector3(5, 1, 1.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pamb8"]
 size = Vector3(5, 1, 1.5)
 
-[sub_resource type="Resource" id="Resource_mr107"]
+[sub_resource type="Resource" id="Resource_ghwrn"]
 resource_local_to_scene = true
 script = ExtResource("6_m234f")
-inventory_slots = Array[Resource("res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd")]([null, null, null, null, null, null, null, null])
+inventory_slots = Array[ExtResource("13_ghwrn")]([null, null, null, null, null, null, null, null])
 
 [sub_resource type="BoxMesh" id="BoxMesh_4ut1y"]
 size = Vector3(1, 6, 5)
@@ -175,11 +176,11 @@ shader_parameter/albedo_fresnel = Color(0.407843, 0.501961, 0.380392, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 1.0
 shader_parameter/transparency = 0.9
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_t05jo")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_t05jo")
 shader_parameter/wave_direction = Vector2(0, -2)
 shader_parameter/wave_direction2 = Vector2(0, -1)
 shader_parameter/time_scale = 0.025
-shader_parameter/texture_normal = SubResource("NoiseTexture2D_t05jo")
-shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_t05jo")
 
 [node name="02_ControlRoom" type="Node3D" node_paths=PackedStringArray("connectors")]
 script = ExtResource("1_qqu7t")
@@ -915,7 +916,7 @@ pause_menu = NodePath("../PauseMenu")
 player_hud = NodePath("../Player_HUD")
 console_container = NodePath("../ConsoleContainer")
 fall_damage = 20
-inventory_data = SubResource("Resource_mr107")
+inventory_data = SubResource("Resource_ghwrn")
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 6.0
 CROUCHING_SPEED = 2.0

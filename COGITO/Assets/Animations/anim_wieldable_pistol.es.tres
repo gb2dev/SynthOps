@@ -715,21 +715,21 @@ tracks/7/keys = {
 
 [resource]
 _data = {
-"Flashlight_equip": SubResource("Animation_w18h4"),
-"Flashlight_reload": SubResource("Animation_iovae"),
-"Flashlight_unequip": SubResource("Animation_yikmx"),
-"Flashlight_use": SubResource("Animation_05qfx"),
-"Hammer_equip": SubResource("Animation_hwhhq"),
-"Hammer_reload": SubResource("Animation_ewj00"),
-"Hammer_unequip": SubResource("Animation_7lpq4"),
-"Hammer_use": SubResource("Animation_67732"),
-"OmniTool_equip": SubResource("Animation_vvsfn"),
-"OmniTool_reload": SubResource("Animation_dxkqu"),
-"OmniTool_unequip": SubResource("Animation_jqomt"),
-"OmniTool_use": SubResource("Animation_1lqo1"),
-"Pistol_equip": SubResource("Animation_5rema"),
-"Pistol_reload": SubResource("Animation_jrl8j"),
-"Pistol_shoot": SubResource("Animation_7p84j"),
-"Pistol_unequip": SubResource("Animation_3fgpw"),
-"RESET": SubResource("Animation_et2q2")
+&"Flashlight_equip": SubResource("Animation_w18h4"),
+&"Flashlight_reload": SubResource("Animation_iovae"),
+&"Flashlight_unequip": SubResource("Animation_yikmx"),
+&"Flashlight_use": SubResource("Animation_05qfx"),
+&"Hammer_equip": SubResource("Animation_hwhhq"),
+&"Hammer_reload": SubResource("Animation_ewj00"),
+&"Hammer_unequip": SubResource("Animation_7lpq4"),
+&"Hammer_use": SubResource("Animation_67732"),
+&"OmniTool_equip": SubResource("Animation_vvsfn"),
+&"OmniTool_reload": SubResource("Animation_dxkqu"),
+&"OmniTool_unequip": SubResource("Animation_jqomt"),
+&"OmniTool_use": SubResource("Animation_1lqo1"),
+&"Pistol_equip": SubResource("Animation_5rema"),
+&"Pistol_reload": SubResource("Animation_jrl8j"),
+&"Pistol_shoot": SubResource("Animation_7p84j"),
+&"Pistol_unequip": SubResource("Animation_3fgpw"),
+&"RESET": SubResource("Animation_et2q2")
 }

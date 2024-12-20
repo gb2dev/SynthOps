@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="InventoryItemPD" load_steps=10 format=3 uid="uid://1sito351mi08"]
 
-[ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventoryItemPD.gd" id="1_6j7dg"]
+[ext_resource type="Script" uid="uid://dg5kirvr8cef1" path="res://COGITO/InventoryPD/CustomResources/InventoryItemPD.gd" id="1_6j7dg"]
 [ext_resource type="Texture2D" uid="uid://bcabonpdkte7d" path="res://COGITO/Assets/Graphics/ItemIcons/Cogito_DiamondKey_B.png" id="1_gdixu"]
 [ext_resource type="Texture2D" uid="uid://bttj6m78b6odm" path="res://COGITO/Assets/Graphics/HintIcons/Hint_Cog.png" id="1_txwkg"]
 [ext_resource type="Resource" uid="uid://gu1buq254o4l" path="res://COGITO/InventoryPD/Items/Cogito_DiamondKey_Combine.tres" id="3_pk5ng"]
-[ext_resource type="Script" path="res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd" id="4_ki7lq"]
+[ext_resource type="Script" uid="uid://bjaap724y6qt6" path="res://COGITO/InventoryPD/CustomResources/InventorySlotPD.gd" id="4_ki7lq"]
 [ext_resource type="AudioStream" uid="uid://npav2p2tk10i" path="res://COGITO/Assets/Audio/Kenney/handleSmallLeather.ogg" id="6_de5x0"]
 [ext_resource type="AudioStream" uid="uid://1w0db1u6lv7t" path="res://COGITO/Assets/Audio/Kenney/UiAudio/rollover6.ogg" id="6_uqyp5"]
 [ext_resource type="AudioStream" uid="uid://bnqnuewmntcyp" path="res://COGITO/Assets/Audio/Kenney/UiAudio/error_008.ogg" id="7_m8rd7"]

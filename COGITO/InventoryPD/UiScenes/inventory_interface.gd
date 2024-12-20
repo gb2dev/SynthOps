@@ -183,4 +183,3 @@ func _on_visibility_changed():
 		drop_slot_data.emit(grabbed_slot_data)
 		grabbed_slot_data = null
 		update_grabbed_slot()
-
